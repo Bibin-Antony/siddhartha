@@ -10,9 +10,13 @@ const Hero = () => {
       <div className="absolute inset-0">
         <img 
           src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop" 
-          alt="Medical Students" 
-          className="h-full w-full object-cover"
+          alt="Medical Students Collaborating" 
+          className="h-full w-full object-cover opacity-100"
           loading="eager"
+          onError={(e) => {
+            console.error("Image failed to load");
+            e.currentTarget.src = "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-800/50 to-emerald-700/40"></div>
       </div>

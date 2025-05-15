@@ -14,7 +14,7 @@ const Gallery = () => {
       size: 'large',
     },
     {
-      src: 'https://images.unsplash.com/photo-1599508704512-4a91fd9668b4?q=80&w=2835&auto=format&fit=crop',
+      src: 'https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2070&auto=format&fit=crop',
       alt: 'Modern Lecture Hall',
       size: 'small',
     },
@@ -72,6 +72,12 @@ const Gallery = () => {
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
+                  onError={(e) => {
+                    console.error(`Gallery image failed to load: ${image.src}`);
+                    // Fallback image if the primary one fails
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2073&auto=format&fit=crop";
+                    e.currentTarget.alt = "Campus Facility";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
                   <p className="text-white">{image.alt}</p>
@@ -101,6 +107,10 @@ const Gallery = () => {
               src={activeImage} 
               alt="Enlarged view" 
               className="max-w-full max-h-[80vh] object-contain"
+              onError={(e) => {
+                console.error("Lightbox image failed to load");
+                e.currentTarget.src = "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?q=80&w=2070&auto=format&fit=crop";
+              }}
             />
           </div>
         </div>

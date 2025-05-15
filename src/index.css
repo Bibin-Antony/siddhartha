@@ -197,18 +197,19 @@ button:focus, a:focus {
   @apply outline-none ring-2 ring-emerald-500/50 ring-offset-2;
 }
 
-/* Image loading optimization */
+/* Fixed image loading issues */
 img {
-  @apply transition-opacity duration-300;
+  @apply transition-opacity duration-300 opacity-100;
 }
 
 img.loaded {
   @apply opacity-100;
 }
 
-img:not(.loaded):not([loading="eager"]) {
+/* Remove any rules that might hide images */
+/* img:not(.loaded):not([loading="eager"]) {
   @apply opacity-0;
-}
+} */
 
 /* Add loading="eager" to hero images for immediate display */
 img[loading="eager"] {

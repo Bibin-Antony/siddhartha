@@ -61,6 +61,10 @@ const Testimonials = () => {
                       alt={testimonials[activeIndex].name}
                       className="w-full h-full object-cover"
                       loading="lazy"
+                      onError={(e) => {
+                        console.error("Testimonial image failed to load");
+                        e.currentTarget.src = "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?q=80&w=2070&auto=format&fit=crop";
+                      }}
                     />
                   </div>
                   <div className="absolute -bottom-2 -right-2 bg-emerald-100 text-emerald-700 rounded-full w-10 h-10 flex items-center justify-center">

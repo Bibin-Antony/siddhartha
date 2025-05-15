@@ -69,6 +69,14 @@ const ProgramsSnapshot = () => {
                   alt={program.imageAlt}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  onError={(e) => {
+                    console.error(`Image failed to load: ${program.image}`);
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.parentElement!.classList.add("bg-emerald-100");
+                    e.currentTarget.parentElement!.classList.add("flex");
+                    e.currentTarget.parentElement!.classList.add("items-center");
+                    e.currentTarget.parentElement!.classList.add("justify-center");
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-4">

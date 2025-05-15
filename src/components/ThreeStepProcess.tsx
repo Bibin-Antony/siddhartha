@@ -19,7 +19,7 @@ const ThreeStepProcess = () => {
       description: 'Become a certified MD in the beautiful island of Curaçao at Avalon University.',
       icon: GraduationCap,
       color: 'bg-emerald-600 text-white',
-      image: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?q=80&w=2074&auto=format&fit=crop'
+      image: 'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?q=80&w=2070&auto=format&fit=crop'
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ const ThreeStepProcess = () => {
       description: 'Clinical rotations in the US with potential residency placements worldwide.',
       icon: Globe,
       color: 'bg-emerald-600 text-white',
-      image: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?q=80&w=2032&auto=format&fit=crop'
+      image: 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=2070&auto=format&fit=crop'
     }
   ];
 
@@ -54,7 +54,7 @@ const ThreeStepProcess = () => {
                   <div className="relative h-56 overflow-hidden">
                     <img 
                       src={step.image} 
-                      alt={step.title} 
+                      alt={`Step ${step.id}: ${step.title}`} 
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                       loading="lazy"
                     />
