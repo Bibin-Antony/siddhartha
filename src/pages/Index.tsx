@@ -11,6 +11,7 @@ import Gallery from '@/components/Gallery';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
+import NotificationBanner from '@/components/NotificationBanner';
 
 const Index = () => {
   // Update page title
@@ -33,6 +34,7 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <NotificationBanner />
       <Navbar />
       
       <ScrollReveal>
