@@ -49,31 +49,31 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <a 
             onClick={() => scrollToSection('about')}
-            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'}`}
           >
             About
           </a>
           <a 
             onClick={() => scrollToSection('programs')}
-            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'}`}
           >
             Programs
           </a>
           <a 
             onClick={() => scrollToSection('admission-form')}
-            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'}`}
           >
             Admissions
           </a>
           <a 
             onClick={() => scrollToSection('contact')}
-            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'}`}
           >
             Contact
           </a>
           <Button 
             variant={isScrolled ? "default" : "secondary"} 
-            className={isScrolled ? "bg-emerald-700 hover:bg-emerald-800" : "border-white text-white hover:bg-white/20"}
+            className={isScrolled ? "bg-emerald-700 hover:bg-emerald-800 text-white font-medium" : "border-white text-white hover:bg-white/20 font-medium"}
             onClick={() => scrollToSection('admission-form')}
           >
             Apply Now
@@ -84,8 +84,9 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             type="button"
-            className={`p-2 rounded-md ${isScrolled ? 'text-charcoal' : 'text-white'}`}
+            className={`p-2 rounded-md ${isScrolled ? 'text-charcoal' : 'text-white'} bg-white/10 backdrop-blur-sm`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? (
               <X className="h-6 w-6" />
@@ -102,31 +103,31 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1">
             <a 
               onClick={() => scrollToSection('about')}
-              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
+              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md font-medium"
             >
               About
             </a>
             <a 
               onClick={() => scrollToSection('programs')}
-              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
+              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md font-medium"
             >
               Programs
             </a>
             <a 
               onClick={() => scrollToSection('admission-form')}
-              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
+              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md font-medium"
             >
               Admissions
             </a>
             <a 
               onClick={() => scrollToSection('contact')}
-              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
+              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md font-medium"
             >
               Contact
             </a>
             <Button 
               variant="default" 
-              className="w-full bg-emerald-700 hover:bg-emerald-800 mt-4"
+              className="w-full bg-emerald-700 hover:bg-emerald-800 mt-4 text-white font-medium"
               onClick={() => scrollToSection('admission-form')}
             >
               Apply Now

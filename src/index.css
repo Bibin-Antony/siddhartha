@@ -156,9 +156,56 @@
 }
 
 .navbar-transparent {
-  @apply bg-transparent;
+  @apply bg-transparent backdrop-blur-sm bg-black/5;
 }
 
 .navbar-solid {
   @apply bg-white shadow-md;
+}
+
+/* Enhanced animations */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Enhanced button focus styles */
+button:focus, a:focus {
+  @apply outline-none ring-2 ring-emerald-500/50 ring-offset-2;
+}
+
+/* Image loading optimization */
+img {
+  @apply transition-opacity duration-300;
+}
+
+img.loaded {
+  @apply opacity-100;
+}
+
+img:not(.loaded) {
+  @apply opacity-0;
 }
