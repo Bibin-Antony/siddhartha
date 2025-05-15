@@ -12,19 +12,19 @@ const Testimonials = () => {
       quote: "The Siddhartha Global pathway made my dream of becoming a doctor possible. The transition from India to Curaçao was smooth, and the clinical rotations in the US gave me invaluable experience.",
       name: "Dr. Priya Sharma",
       role: "Recent Graduate, Class of 2021",
-      image: "/testimonials/person-1.jpg"
+      image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1974&auto=format&fit=crop"
     },
     {
       quote: "As a faculty member, I've witnessed the incredible growth of students who come through this program. The comprehensive curriculum truly prepares them for global medical practice.",
       name: "Dr. Robert Miller",
       role: "Professor of Clinical Medicine",
-      image: "/testimonials/person-2.jpg"
+      image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=2070&auto=format&fit=crop"
     },
     {
       quote: "The mentorship I received during my journey was exceptional. The faculty truly cares about student success, and the international exposure is unmatched by other programs.",
       name: "Dr. Ananya Patel",
       role: "Practicing Physician, New York",
-      image: "/testimonials/person-3.jpg"
+      image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070&auto=format&fit=crop"
     }
   ];
 
@@ -60,12 +60,13 @@ const Testimonials = () => {
                       src={testimonials[activeIndex].image} 
                       alt={testimonials[activeIndex].name}
                       className="w-full h-full object-cover"
+                      loading="lazy"
                     />
                   </div>
                   <div className="absolute -bottom-2 -right-2 bg-emerald-100 text-emerald-700 rounded-full w-10 h-10 flex items-center justify-center">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M10 11L5 6M5 6L10 1M5 6H19C20.1046 6 21 6.89543 21 8V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      <path d="M14 13L19 18M19 18L14 23M19 18H5C3.89543 18 3 17.1046 3 16V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M10 11L5 6M5 6L10 1M5 6H19C20.1046 6 21 6.89543 21 8V13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M14 13L19 18M19 18L14 23M19 18H5C3.89543 18 3 17.1046 3 16V11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                 </div>

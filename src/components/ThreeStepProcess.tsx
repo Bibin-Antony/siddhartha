@@ -11,7 +11,7 @@ const ThreeStepProcess = () => {
       description: 'Equip yourself with the foundational skills and knowledge needed to succeed in your MD journey.',
       icon: Book,
       color: 'bg-emerald-600 text-white',
-      image: '/india-education.jpg'
+      image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop'
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const ThreeStepProcess = () => {
       description: 'Become a certified MD in the beautiful island of Curaçao at Avalon University.',
       icon: GraduationCap,
       color: 'bg-emerald-600 text-white',
-      image: '/curacao-campus.jpg'
+      image: 'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?q=80&w=2074&auto=format&fit=crop'
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ const ThreeStepProcess = () => {
       description: 'Clinical rotations in the US with potential residency placements worldwide.',
       icon: Globe,
       color: 'bg-emerald-600 text-white',
-      image: '/medical-career.jpg'
+      image: 'https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?q=80&w=2032&auto=format&fit=crop'
     }
   ];
 
@@ -56,6 +56,7 @@ const ThreeStepProcess = () => {
                       src={step.image} 
                       alt={step.title} 
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-50"></div>
                     <div className="absolute top-4 right-4 bg-white text-emerald-700 font-bold h-12 w-12 rounded-full flex items-center justify-center shadow-lg">

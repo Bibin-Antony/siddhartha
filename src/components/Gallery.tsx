@@ -9,32 +9,32 @@ const Gallery = () => {
 
   const images = [
     {
-      src: '/gallery/campus-1.jpg',
+      src: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070&auto=format&fit=crop',
       alt: 'Main Campus Building',
       size: 'large',
     },
     {
-      src: '/gallery/classroom-1.jpg',
+      src: 'https://images.unsplash.com/photo-1599508704512-4a91fd9668b4?q=80&w=2835&auto=format&fit=crop',
       alt: 'Modern Lecture Hall',
       size: 'small',
     },
     {
-      src: '/gallery/lab-1.jpg',
+      src: 'https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?q=80&w=2070&auto=format&fit=crop',
       alt: 'Advanced Medical Laboratory',
       size: 'medium',
     },
     {
-      src: '/gallery/students-1.jpg',
+      src: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2070&auto=format&fit=crop',
       alt: 'International Students in Discussion',
       size: 'medium',
     },
     {
-      src: '/gallery/curacao-1.jpg',
+      src: 'https://images.unsplash.com/photo-1618944847828-82e943c3bdb6?q=80&w=2070&auto=format&fit=crop',
       alt: 'Beautiful Curaçao Campus',
       size: 'small',
     },
     {
-      src: '/gallery/doctor-1.jpg',
+      src: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080&auto=format&fit=crop',
       alt: 'Clinical Training with Professionals',
       size: 'large',
     },
@@ -71,6 +71,7 @@ const Gallery = () => {
                   src={image.src} 
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
                   <p className="text-white">{image.alt}</p>
