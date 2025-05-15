@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Check } from 'lucide-react';
+import PencilUnderline from './PencilUnderline';
 
 const About = () => {
   const highlights = [
@@ -17,15 +18,20 @@ const About = () => {
       <div className="container-wide">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="reveal">
-            <img 
-              src="/campus.jpg" 
-              alt="Siddhartha Global Campus" 
-              className="rounded-lg shadow-xl"
-            />
+            <div className="relative rounded-lg shadow-xl overflow-hidden">
+              <img 
+                src="/campus-building.jpg" 
+                alt="Siddhartha Global Campus" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-700/40 to-transparent"></div>
+            </div>
           </div>
           
           <div className="reveal delay-200">
-            <h2 className="text-emerald-700 mb-4">50+ Years of Distinctive Learning</h2>
+            <h2 className="text-emerald-700 mb-4">
+              <PencilUnderline>50+ Years</PencilUnderline> of Distinctive Learning
+            </h2>
             <p className="text-gray-700 mb-6">
               Siddhartha Academy of Higher Education has delivered distinctive learning for 
               over five decades. Through a unique partnership with fully-accredited Avalon 

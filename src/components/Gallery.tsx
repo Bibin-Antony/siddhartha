@@ -1,36 +1,41 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Search, X } from 'lucide-react';
+import PencilUnderline from './PencilUnderline';
 
 const Gallery = () => {
+  const [activeImage, setActiveImage] = useState<null | string>(null);
+
   const images = [
     {
       src: '/gallery/campus-1.jpg',
-      alt: 'Campus Building',
+      alt: 'Main Campus Building',
       size: 'large',
     },
     {
       src: '/gallery/classroom-1.jpg',
-      alt: 'Modern Classroom',
+      alt: 'Modern Lecture Hall',
       size: 'small',
     },
     {
       src: '/gallery/lab-1.jpg',
-      alt: 'Medical Laboratory',
+      alt: 'Advanced Medical Laboratory',
       size: 'medium',
     },
     {
       src: '/gallery/students-1.jpg',
-      alt: 'Students in Discussion',
+      alt: 'International Students in Discussion',
       size: 'medium',
     },
     {
       src: '/gallery/curacao-1.jpg',
-      alt: 'Curaçao Campus',
+      alt: 'Beautiful Curaçao Campus',
       size: 'small',
     },
     {
       src: '/gallery/doctor-1.jpg',
-      alt: 'Clinical Training',
+      alt: 'Clinical Training with Professionals',
       size: 'large',
     },
   ];
@@ -39,7 +44,9 @@ const Gallery = () => {
     <section className="section bg-emerald-50 py-20">
       <div className="container-wide">
         <div className="text-center mb-12 reveal">
-          <h2 className="text-emerald-700 mb-4">Our Campus & Facilities</h2>
+          <h2 className="text-emerald-700 mb-4">
+            <PencilUnderline>Our Campus & Facilities</PencilUnderline>
+          </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Take a visual tour of our world-class facilities in India and Curaçao.
           </p>
@@ -49,7 +56,7 @@ const Gallery = () => {
           {images.map((image, index) => (
             <div 
               key={index}
-              className={`reveal overflow-hidden rounded-lg ${
+              className={`reveal overflow-hidden rounded-lg cursor-pointer ${
                 image.size === 'large' 
                   ? 'md:col-span-2 md:row-span-2' 
                   : image.size === 'medium' 
@@ -57,6 +64,7 @@ const Gallery = () => {
                     : ''
               }`}
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => setActiveImage(image.src)}
             >
               <div className="group h-64 md:h-80 w-full bg-gray-200 relative overflow-hidden">
                 <img 
@@ -64,14 +72,38 @@ const Gallery = () => {
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <p className="text-white p-4">{image.alt}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
+                  <p className="text-white">{image.alt}</p>
+                  <Button variant="outline" size="icon" className="rounded-full bg-white/20 border-0 text-white hover:bg-white/40">
+                    <Search size={16} />
+                  </Button>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Lightbox modal */}
+      {activeImage && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <Button 
+            variant="outline" 
+            size="icon" 
+            className="absolute top-4 right-4 rounded-full bg-white/10 border-0 text-white hover:bg-white/20"
+            onClick={() => setActiveImage(null)}
+          >
+            <X size={20} />
+          </Button>
+          <div className="max-w-5xl max-h-[80vh] relative">
+            <img 
+              src={activeImage} 
+              alt="Enlarged view" 
+              className="max-w-full max-h-[80vh] object-contain"
+            />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import PencilUnderline from './PencilUnderline';
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -41,22 +42,32 @@ const Testimonials = () => {
     <section className="section bg-white py-20">
       <div className="container-wide">
         <div className="text-center mb-12 reveal">
-          <h2 className="text-emerald-700 mb-4">Success Stories</h2>
+          <h2 className="text-emerald-700 mb-4">
+            <PencilUnderline>Success Stories</PencilUnderline>
+          </h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Hear from our alumni and faculty about their experiences.
           </p>
         </div>
         
         <div className="max-w-4xl mx-auto reveal">
-          <div className="bg-emerald-50 rounded-2xl p-8 md:p-12 relative">
+          <div className="bg-emerald-50 rounded-2xl p-8 md:p-12 relative border border-emerald-100">
             <div className="flex flex-col md:flex-row gap-8 items-center">
               <div className="md:w-1/3">
-                <div className="rounded-full overflow-hidden w-24 h-24 md:w-32 md:h-32 border-4 border-white shadow-lg mx-auto">
-                  <img 
-                    src={testimonials[activeIndex].image} 
-                    alt={testimonials[activeIndex].name}
-                    className="w-full h-full object-cover"
-                  />
+                <div className="relative">
+                  <div className="rounded-full overflow-hidden w-24 h-24 md:w-32 md:h-32 border-4 border-white shadow-lg mx-auto">
+                    <img 
+                      src={testimonials[activeIndex].image} 
+                      alt={testimonials[activeIndex].name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute -bottom-2 -right-2 bg-emerald-100 text-emerald-700 rounded-full w-10 h-10 flex items-center justify-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10 11L5 6M5 6L10 1M5 6H19C20.1046 6 21 6.89543 21 8V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M14 13L19 18M19 18L14 23M19 18H5C3.89543 18 3 17.1046 3 16V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
                 </div>
               </div>
               

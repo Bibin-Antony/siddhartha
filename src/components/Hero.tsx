@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import PencilUnderline from './PencilUnderline';
 
 const Hero = () => {
   return (
@@ -13,7 +14,9 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div className="text-white reveal">
             <div className="text-sm font-medium mb-4 text-emerald-100">Charting a New Course to Medical Excellence — Trust the experts.</div>
-            <h1 className="text-white mb-6">Empowering Future Doctors</h1>
+            <h1 className="text-white mb-6">
+              Empowering <PencilUnderline>Future Doctors</PencilUnderline>
+            </h1>
             <p className="text-xl md:text-2xl font-light text-emerald-50 mb-8">
               Pathway to Global Pre-Med → MD Program in USA
             </p>
@@ -40,8 +43,8 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute -top-5 -left-5 w-72 h-72 bg-emerald-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
               <img 
-                src="/medical-student.jpg" 
-                alt="Medical Student" 
+                src="/medical-students.jpg" 
+                alt="Medical Students" 
                 className="relative z-10 rounded-lg shadow-2xl max-w-md"
               />
               <div className="absolute -bottom-5 -right-5 w-64 h-64 bg-emerald-300 rounded-full filter blur-3xl opacity-30 animate-float delay-1000"></div>

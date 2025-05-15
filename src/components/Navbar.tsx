@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,6 +23,11 @@ const Navbar = () => {
     };
   }, []);
 
+  const scrollToSection = (id: string) => {
+    setMobileMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <nav className={`navbar ${isScrolled ? 'navbar-solid' : 'navbar-transparent'}`}>
       <div className="container-wide flex items-center justify-between py-4">
@@ -41,22 +47,34 @@ const Navbar = () => {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          <a href="#about" className={`transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}>
+          <a 
+            onClick={() => scrollToSection('about')}
+            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+          >
             About
           </a>
-          <a href="#programs" className={`transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}>
+          <a 
+            onClick={() => scrollToSection('programs')}
+            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+          >
             Programs
           </a>
-          <a href="#admissions" className={`transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}>
+          <a 
+            onClick={() => scrollToSection('admission-form')}
+            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+          >
             Admissions
           </a>
-          <a href="#contact" className={`transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}>
+          <a 
+            onClick={() => scrollToSection('contact')}
+            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+          >
             Contact
           </a>
           <Button 
             variant={isScrolled ? "default" : "secondary"} 
             className={isScrolled ? "bg-emerald-700 hover:bg-emerald-800" : "border-white text-white hover:bg-white/20"}
-            onClick={() => document.getElementById('admission-form')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scrollToSection('admission-form')}
           >
             Apply Now
           </Button>
@@ -70,13 +88,9 @@ const Navbar = () => {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <X className="h-6 w-6" />
             ) : (
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
+              <Menu className="h-6 w-6" />
             )}
           </button>
         </div>
@@ -84,43 +98,36 @@ const Navbar = () => {
       
       {/* Mobile menu, show/hide based on menu state */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg">
+        <div className="md:hidden bg-white shadow-lg absolute w-full z-50">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <a 
-              href="#about" 
+              onClick={() => scrollToSection('about')}
               className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
-              onClick={() => setMobileMenuOpen(false)}
             >
               About
             </a>
             <a 
-              href="#programs" 
+              onClick={() => scrollToSection('programs')}
               className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
-              onClick={() => setMobileMenuOpen(false)}
             >
               Programs
             </a>
             <a 
-              href="#admissions" 
+              onClick={() => scrollToSection('admission-form')}
               className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
-              onClick={() => setMobileMenuOpen(false)}
             >
               Admissions
             </a>
             <a 
-              href="#contact" 
+              onClick={() => scrollToSection('contact')}
               className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
-              onClick={() => setMobileMenuOpen(false)}
             >
               Contact
             </a>
             <Button 
               variant="default" 
               className="w-full bg-emerald-700 hover:bg-emerald-800 mt-4"
-              onClick={() => {
-                document.getElementById('admission-form')?.scrollIntoView({ behavior: 'smooth' });
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => scrollToSection('admission-form')}
             >
               Apply Now
             </Button>

@@ -18,6 +18,19 @@ const Index = () => {
     document.title = "Siddhartha Global & Avalon University - Empowering Future Doctors";
   }, []);
 
+  // Scroll to section if hash is present in URL
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />

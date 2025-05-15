@@ -1,9 +1,28 @@
 
 import React from 'react';
-import { Phone, Mail, Facebook, Linkedin, Instagram } from 'lucide-react';
+import { Phone, Mail, Facebook, Linkedin, Instagram, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { useToast } from '@/hooks/use-toast';
 
 const Footer = () => {
+  const { toast } = useToast();
+  
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    
+    // Clear form
+    form.reset();
+    
+    // Show success message
+    toast({
+      title: "Subscribed!",
+      description: `You'll receive updates at ${email}`,
+    });
+  };
+
   return (
     <>
       <footer id="contact" className="bg-emerald-800 text-white pt-16 pb-8">
@@ -23,14 +42,14 @@ const Footer = () => {
                 Providing accessible pathways to medical education without compromising on quality or recognition.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-emerald-100 hover:text-white transition-colors">
-                  <Facebook size={20} />
+                <a href="#" className="text-emerald-100 hover:text-white transition-colors p-2 bg-emerald-700/50 rounded-full hover:bg-emerald-700">
+                  <Facebook size={18} />
                 </a>
-                <a href="#" className="text-emerald-100 hover:text-white transition-colors">
-                  <Linkedin size={20} />
+                <a href="#" className="text-emerald-100 hover:text-white transition-colors p-2 bg-emerald-700/50 rounded-full hover:bg-emerald-700">
+                  <Linkedin size={18} />
                 </a>
-                <a href="#" className="text-emerald-100 hover:text-white transition-colors">
-                  <Instagram size={20} />
+                <a href="#" className="text-emerald-100 hover:text-white transition-colors p-2 bg-emerald-700/50 rounded-full hover:bg-emerald-700">
+                  <Instagram size={18} />
                 </a>
               </div>
             </div>
@@ -40,16 +59,24 @@ const Footer = () => {
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#about" className="text-emerald-100 hover:text-white transition-colors">About Us</a>
+                  <a href="#about" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> About Us
+                  </a>
                 </li>
                 <li>
-                  <a href="#programs" className="text-emerald-100 hover:text-white transition-colors">Programs</a>
+                  <a href="#programs" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> Programs
+                  </a>
                 </li>
                 <li>
-                  <a href="#admission-form" className="text-emerald-100 hover:text-white transition-colors">Admissions</a>
+                  <a href="#admission-form" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> Admissions
+                  </a>
                 </li>
                 <li>
-                  <a href="#contact" className="text-emerald-100 hover:text-white transition-colors">Contact Us</a>
+                  <a href="#contact" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> Contact Us
+                  </a>
                 </li>
               </ul>
             </div>
@@ -58,15 +85,23 @@ const Footer = () => {
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
               <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <Phone size={18} className="text-emerald-300" />
-                  <span className="text-emerald-100">+91 960 697 4400</span>
+                <div className="flex items-start space-x-3">
+                  <Phone size={18} className="text-emerald-300 mt-1 flex-shrink-0" />
+                  <a href="tel:+919606974400" className="text-emerald-100 hover:text-white transition-colors">
+                    +91 960 697 4400
+                  </a>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <Mail size={18} className="text-emerald-300" />
+                <div className="flex items-start space-x-3">
+                  <Mail size={18} className="text-emerald-300 mt-1 flex-shrink-0" />
                   <a href="mailto:admissions@siddharthaglobal.com" className="text-emerald-100 hover:text-white transition-colors">
                     admissions@siddharthaglobal.com
                   </a>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <MapPin size={18} className="text-emerald-300 mt-1 flex-shrink-0" />
+                  <span className="text-emerald-100">
+                    Siddhartha Academy Complex, Vijayawada, Andhra Pradesh, India
+                  </span>
                 </div>
               </div>
             </div>
@@ -77,14 +112,18 @@ const Footer = () => {
               <p className="text-emerald-100 mb-3">
                 Subscribe to our newsletter for updates on admissions and programs.
               </p>
-              <form className="flex">
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="bg-emerald-700 text-white rounded-l-md px-4 py-2 focus:outline-none flex-grow"
-                />
+              <form className="flex" onSubmit={handleSubscribe}>
+                <div className="relative flex-grow">
+                  <Input 
+                    type="email" 
+                    name="email"
+                    placeholder="Your email" 
+                    className="bg-emerald-700 text-white rounded-l-md px-4 py-2 focus:outline-none focus:ring-1 focus:ring-emerald-400 border-emerald-600 flex-grow"
+                    required
+                  />
+                </div>
                 <Button type="submit" className="bg-emerald-600 hover:bg-emerald-500 rounded-l-none">
-                  Subscribe
+                  <Send size={16} />
                 </Button>
               </form>
             </div>
