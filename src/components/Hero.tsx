@@ -19,7 +19,7 @@ const Hero = () => {
       
       {/* Hero content */}
       <div className="container-wide relative z-10 pt-24">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="grid lg:grid-cols-1 gap-8 items-center">
           <div className="text-white reveal">
             <div className="inline-block mb-4 px-4 py-1.5 bg-emerald-600/40 rounded-full border border-emerald-500/30 backdrop-blur-sm">
               <span className="text-sm font-medium text-emerald-100">Charting a New Course to Medical Excellence — Trust the experts.</span>
@@ -73,25 +73,6 @@ const Hero = () => {
                 <div className="font-bold text-2xl text-white">5000+</div>
                 <div className="text-emerald-100 text-sm">Successful Alumni</div>
               </div>
-            </div>
-          </div>
-          
-          <div className="hidden lg:block reveal delay-200">
-            <div className="relative">
-              <div className="absolute -top-5 -left-5 w-72 h-72 bg-emerald-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-8 border-white/10">
-                <img 
-                  src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2071&auto=format&fit=crop" 
-                  alt="Medical professionals" 
-                  className="w-full h-auto"
-                  loading="eager"
-                />
-                {/* Feature badge */}
-                <div className="absolute top-6 right-6 bg-white py-2 px-4 rounded-full shadow-lg">
-                  <span className="text-sm font-semibold text-emerald-700">CAAM-HP Accredited</span>
-                </div>
-              </div>
-              <div className="absolute -bottom-5 -right-5 w-64 h-64 bg-emerald-300 rounded-full filter blur-3xl opacity-30 animate-float delay-1000"></div>
             </div>
           </div>
         </div>
