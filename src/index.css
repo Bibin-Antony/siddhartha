@@ -156,7 +156,7 @@
 }
 
 .navbar-transparent {
-  @apply bg-transparent backdrop-blur-sm bg-black/5;
+  @apply bg-black/10 backdrop-blur-sm;
 }
 
 .navbar-solid {
@@ -206,6 +206,11 @@ img.loaded {
   @apply opacity-100;
 }
 
-img:not(.loaded) {
+img:not(.loaded):not([loading="eager"]) {
   @apply opacity-0;
+}
+
+/* Add loading="eager" to hero images for immediate display */
+img[loading="eager"] {
+  @apply opacity-100;
 }

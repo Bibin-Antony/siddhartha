@@ -39,7 +39,7 @@ const Navbar = () => {
               alt="Siddhartha Global & Avalon University" 
               className="h-10 w-auto"
             />
-            <span className={`text-lg font-semibold transition-colors duration-300 ${isScrolled ? 'text-emerald-700' : 'text-white'}`}>
+            <span className={`text-lg font-semibold ${isScrolled ? 'text-emerald-700' : 'text-white'} drop-shadow-md`}>
               Siddhartha Global
             </span>
           </a>
@@ -49,31 +49,31 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-8">
           <a 
             onClick={() => scrollToSection('about')}
-            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'}`}
+            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'} drop-shadow-md`}
           >
             About
           </a>
           <a 
             onClick={() => scrollToSection('programs')}
-            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'}`}
+            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'} drop-shadow-md`}
           >
             Programs
           </a>
           <a 
             onClick={() => scrollToSection('admission-form')}
-            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'}`}
+            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'} drop-shadow-md`}
           >
             Admissions
           </a>
           <a 
             onClick={() => scrollToSection('contact')}
-            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'}`}
+            className={`cursor-pointer font-medium transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-100'} drop-shadow-md`}
           >
             Contact
           </a>
           <Button 
             variant={isScrolled ? "default" : "secondary"} 
-            className={isScrolled ? "bg-emerald-700 hover:bg-emerald-800 text-white font-medium" : "border-white text-white hover:bg-white/20 font-medium"}
+            className={isScrolled ? "bg-emerald-700 hover:bg-emerald-800 text-white font-medium shadow-md" : "border-white text-white hover:bg-white/20 font-medium shadow-md"}
             onClick={() => scrollToSection('admission-form')}
           >
             Apply Now
@@ -84,7 +84,7 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             type="button"
-            className={`p-2 rounded-md ${isScrolled ? 'text-charcoal' : 'text-white'} bg-white/10 backdrop-blur-sm`}
+            className={`p-2 rounded-md ${isScrolled ? 'text-charcoal' : 'text-white'} bg-white/20 backdrop-blur-sm shadow-md`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle mobile menu"
           >
@@ -127,7 +127,7 @@ const Navbar = () => {
             </a>
             <Button 
               variant="default" 
-              className="w-full bg-emerald-700 hover:bg-emerald-800 mt-4 text-white font-medium"
+              className="w-full bg-emerald-700 hover:bg-emerald-800 mt-4 text-white font-medium shadow-md"
               onClick={() => scrollToSection('admission-form')}
             >
               Apply Now

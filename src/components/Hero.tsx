@@ -6,14 +6,15 @@ import { ArrowRight } from 'lucide-react';
 const Hero = () => {
   return (
     <div className="relative bg-emerald-700 min-h-screen flex items-center">
-      {/* Background image - more visible, reduced overlay */}
+      {/* Background image with reduced overlay for better visibility */}
       <div className="absolute inset-0">
         <img 
-          src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2071&auto=format&fit=crop" 
-          alt="Medical professionals" 
+          src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop" 
+          alt="Medical Students" 
           className="h-full w-full object-cover"
+          loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-800/70 to-emerald-700/70"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-800/50 to-emerald-700/40"></div>
       </div>
       
       {/* Hero content */}
@@ -80,9 +81,10 @@ const Hero = () => {
               <div className="absolute -top-5 -left-5 w-72 h-72 bg-emerald-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
               <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-8 border-white/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Medical Students" 
+                  src="https://images.unsplash.com/photo-1631815588090-d4bfec5b1ccb?q=80&w=2071&auto=format&fit=crop" 
+                  alt="Medical professionals" 
                   className="w-full h-auto"
+                  loading="eager"
                 />
                 {/* Feature badge */}
                 <div className="absolute top-6 right-6 bg-white py-2 px-4 rounded-full shadow-lg">
