@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Check, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import PencilUnderline from './PencilUnderline';
 import { Card, CardContent } from '@/components/ui/card';
 
 const AdmissionsForm = () => {
@@ -42,12 +41,21 @@ const AdmissionsForm = () => {
   };
 
   return (
-    <section id="admission-form" className="section py-24 bg-white">
-      <div className="container-wide">
+    <section id="admission-form" className="section py-28 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-emerald-100 rounded-full opacity-20"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-100 rounded-full opacity-20"></div>
+      </div>
+      
+      <div className="container-wide relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="reveal order-2 md:order-1">
             <h2 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-6">
-              <PencilUnderline>Start Your Medical Journey</PencilUnderline> Today
+              <span className="relative">
+                Start Your Medical Journey
+                <span className="absolute bottom-1 left-0 w-full h-1 bg-emerald-400"></span>
+              </span>
+              {" "}Today
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
               Take the first step towards your medical career by applying to our globally recognized program.
@@ -60,7 +68,7 @@ const AdmissionsForm = () => {
                 <ul className="space-y-4">
                   {eligibilityCriteria.map((criterion, index) => (
                     <li key={index} className="flex items-center space-x-3">
-                      <div className="bg-emerald-100 rounded-full p-1 text-emerald-700">
+                      <div className="bg-emerald-100 rounded-full p-1.5 text-emerald-700">
                         <Check className="h-5 w-5" />
                       </div>
                       <span className="text-gray-700">{criterion}</span>
@@ -74,7 +82,7 @@ const AdmissionsForm = () => {
               <img 
                 src="/admissions-team.jpg" 
                 alt="Our Admissions Team" 
-                className="rounded-lg shadow-xl"
+                className="rounded-xl shadow-xl"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl border-l-4 border-emerald-500">
                 <div className="text-base font-bold text-emerald-700">24/7 Support</div>
@@ -85,7 +93,7 @@ const AdmissionsForm = () => {
           
           <div className="reveal order-1 md:order-2 delay-200">
             <Card className="shadow-2xl rounded-xl border-none overflow-hidden">
-              <div className="h-3 bg-gradient-to-r from-emerald-500 to-emerald-400"></div>
+              <div className="h-3 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
               <CardContent className="p-8">
                 <h3 className="text-2xl font-bold mb-8 text-emerald-800 text-center">Apply Now</h3>
                 <form onSubmit={handleSubmit}>
