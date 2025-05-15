@@ -1,12 +1,41 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React, { useEffect } from 'react';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import ThreeStepProcess from '@/components/ThreeStepProcess';
+import About from '@/components/About';
+import ProgramsSnapshot from '@/components/ProgramsSnapshot';
+import StatisticsBand from '@/components/StatisticsBand';
+import AdmissionsForm from '@/components/AdmissionsForm';
+import Gallery from '@/components/Gallery';
+import Testimonials from '@/components/Testimonials';
+import Footer from '@/components/Footer';
+import ScrollReveal from '@/components/ScrollReveal';
 
 const Index = () => {
+  // Update page title
+  useEffect(() => {
+    document.title = "Siddhartha Global & Avalon University - Empowering Future Doctors";
+  }, []);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      
+      <ScrollReveal>
+        <main>
+          <Hero />
+          <ThreeStepProcess />
+          <About />
+          <ProgramsSnapshot />
+          <StatisticsBand />
+          <AdmissionsForm />
+          <Gallery />
+          <Testimonials />
+        </main>
+      </ScrollReveal>
+      
+      <Footer />
     </div>
   );
 };
