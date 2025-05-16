@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,141 +29,112 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      {/* Top info bar */}
-      <div className="bg-orange-500 text-white py-2 px-4">
-        <div className="container-wide flex justify-between items-center">
-          <div className="flex items-center space-x-4">
-            <a href="tel:+919606974400" className="flex items-center text-sm">
-              <Phone size={14} className="mr-1" />
-              +91 9606974400
-            </a>
-            <a href="mailto:admissions@siddharthaglobal.com" className="flex items-center text-sm">
-              <Mail size={14} className="mr-1" />
-              admissions@siddharthaglobal.com
-            </a>
-          </div>
+    <nav className={`navbar ${isScrolled ? 'navbar-solid' : 'navbar-transparent'}`}>
+      <div className="container-wide flex items-center justify-between py-4">
+        {/* Logo */}
+        <div className="flex items-center">
+          <a href="/" className="flex items-center space-x-2">
+            <img 
+              src="/logo-placeholder.svg" 
+              alt="Siddhartha Global & Avalon University" 
+              className="h-10 w-auto"
+            />
+            <span className={`text-lg font-semibold transition-colors duration-300 ${isScrolled ? 'text-emerald-700' : 'text-white'}`}>
+              Siddhartha Global
+            </span>
+          </a>
+        </div>
+        
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex items-center space-x-8">
+          <a 
+            onClick={() => scrollToSection('about')}
+            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+          >
+            About
+          </a>
+          <a 
+            onClick={() => scrollToSection('programs')}
+            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+          >
+            Programs
+          </a>
+          <a 
+            onClick={() => scrollToSection('admission-form')}
+            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+          >
+            Admissions
+          </a>
+          <a 
+            onClick={() => scrollToSection('contact')}
+            className={`cursor-pointer transition-colors duration-300 ${isScrolled ? 'text-charcoal hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+          >
+            Contact
+          </a>
+          <Button 
+            variant={isScrolled ? "default" : "secondary"} 
+            className={isScrolled ? "bg-emerald-700 hover:bg-emerald-800" : "border-white text-white hover:bg-white/20"}
+            onClick={() => scrollToSection('admission-form')}
+          >
+            Apply Now
+          </Button>
+        </div>
+        
+        {/* Mobile menu button */}
+        <div className="md:hidden">
+          <button
+            type="button"
+            className={`p-2 rounded-md ${isScrolled ? 'text-charcoal' : 'text-white'}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
         </div>
       </div>
       
-      {/* Main navigation */}
-      <nav className={`bg-white shadow-md sticky top-0 z-50`}>
-        <div className="container-wide flex items-center justify-between py-4">
-          {/* Logo */}
-          <div className="flex items-center">
-            <a href="/" className="flex items-center space-x-2">
-              <img 
-                src="/logo-placeholder.svg" 
-                alt="Siddhartha Global & Avalon University" 
-                className="h-12 w-auto"
-              />
-              <span className="text-lg font-semibold text-emerald-700 hidden md:inline">
-                Siddhartha Global & Avalon University
-              </span>
-            </a>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+      {/* Mobile menu, show/hide based on menu state */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white shadow-lg absolute w-full z-50">
+          <div className="px-2 pt-2 pb-3 space-y-1">
             <a 
               onClick={() => scrollToSection('about')}
-              className="cursor-pointer font-medium transition-colors duration-300 text-gray-700 hover:text-emerald-700"
+              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
             >
-              About Us
+              About
             </a>
             <a 
               onClick={() => scrollToSection('programs')}
-              className="cursor-pointer font-medium transition-colors duration-300 text-gray-700 hover:text-emerald-700"
+              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
             >
               Programs
             </a>
             <a 
               onClick={() => scrollToSection('admission-form')}
-              className="cursor-pointer font-medium transition-colors duration-300 text-gray-700 hover:text-emerald-700"
+              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
             >
               Admissions
             </a>
             <a 
-              className="cursor-pointer font-medium transition-colors duration-300 text-gray-700 hover:text-emerald-700"
-            >
-              Useful Information
-            </a>
-            <a 
               onClick={() => scrollToSection('contact')}
-              className="cursor-pointer font-medium transition-colors duration-300 text-gray-700 hover:text-emerald-700"
+              className="block px-3 py-2 text-charcoal hover:bg-emerald-50 hover:text-emerald-700 rounded-md"
             >
-              Contact Us
+              Contact
             </a>
             <Button 
-              className="bg-orange-500 hover:bg-orange-600 text-white font-medium"
+              variant="default" 
+              className="w-full bg-emerald-700 hover:bg-emerald-800 mt-4"
               onClick={() => scrollToSection('admission-form')}
             >
               Apply Now
             </Button>
           </div>
-          
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <button
-              type="button"
-              className="p-2 rounded-md text-gray-700"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </button>
-          </div>
         </div>
-        
-        {/* Mobile menu, show/hide based on menu state */}
-        {mobileMenuOpen && (
-          <div className="md:hidden bg-white shadow-lg absolute w-full z-50">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <a 
-                onClick={() => scrollToSection('about')}
-                className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-emerald-700 rounded-md font-medium"
-              >
-                About
-              </a>
-              <a 
-                onClick={() => scrollToSection('programs')}
-                className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-emerald-700 rounded-md font-medium"
-              >
-                Programs
-              </a>
-              <a 
-                onClick={() => scrollToSection('admission-form')}
-                className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-emerald-700 rounded-md font-medium"
-              >
-                Admissions
-              </a>
-              <a 
-                className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-emerald-700 rounded-md font-medium"
-              >
-                Useful Information
-              </a>
-              <a 
-                onClick={() => scrollToSection('contact')}
-                className="block px-3 py-2 text-gray-700 hover:bg-gray-50 hover:text-emerald-700 rounded-md font-medium"
-              >
-                Contact Us
-              </a>
-              <Button 
-                variant="default" 
-                className="w-full bg-orange-500 hover:bg-orange-600 mt-4 text-white font-medium"
-                onClick={() => scrollToSection('admission-form')}
-              >
-                Apply Now
-              </Button>
-            </div>
-          </div>
-        )}
-      </nav>
-    </>
+      )}
+    </nav>
   );
 };
 

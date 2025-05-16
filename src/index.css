@@ -105,11 +105,11 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1;
+    @apply bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-3 px-6 rounded-md transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1;
   }
   
   .btn-secondary {
-    @apply bg-transparent border-2 border-white text-white hover:bg-white/20 font-semibold py-3 px-6 rounded-md transition-all duration-300 hover:shadow-md transform hover:-translate-y-1;
+    @apply bg-transparent border-2 border-emerald-700 text-emerald-700 hover:bg-emerald-50 font-semibold py-3 px-6 rounded-md transition-all duration-300 hover:shadow-md transform hover:-translate-y-1;
   }
   
   .card {
@@ -156,62 +156,9 @@
 }
 
 .navbar-transparent {
-  @apply bg-black/10 backdrop-blur-sm;
+  @apply bg-transparent;
 }
 
 .navbar-solid {
   @apply bg-white shadow-md;
-}
-
-/* Enhanced animations */
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out forwards;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Enhanced button focus styles */
-button:focus, a:focus {
-  @apply outline-none ring-2 ring-orange-500/50 ring-offset-2;
-}
-
-/* Fixed image loading issues */
-img {
-  @apply transition-opacity duration-300 opacity-100;
-}
-
-img.loaded {
-  @apply opacity-100;
-}
-
-/* Remove any rules that might hide images */
-/* img:not(.loaded):not([loading="eager"]) {
-  @apply opacity-0;
-} */
-
-/* Add loading="eager" to hero images for immediate display */
-img[loading="eager"] {
-  @apply opacity-100;
 }

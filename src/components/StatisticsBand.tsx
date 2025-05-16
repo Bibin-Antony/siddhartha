@@ -14,41 +14,41 @@ const StatisticsBand = () => {
       unit: 'Lakh',
       description: 'students vie for 1,07,948 medical seats in India',
       icon: '/stats-india.svg',
-      bgClass: 'from-emerald-800 to-emerald-700'
+      bgClass: 'from-emerald-800/80 to-emerald-700/80'
     },
     {
       value: '22,666',
       unit: 'of 62,443',
       description: 'US applicants accepted (2021)',
       icon: '/stats-usa.svg',
-      bgClass: 'from-emerald-700 to-emerald-600'
+      bgClass: 'from-emerald-700/80 to-emerald-600/80'
     },
     {
       value: '42',
       unit: '%',
       description: 'US acceptance rate',
       icon: '/stats-percentage.svg',
-      bgClass: 'from-emerald-600 to-emerald-500'
+      bgClass: 'from-emerald-600/80 to-emerald-500/80'
     },
     {
       value: '<10',
       unit: '%',
       description: 'Canadian acceptance rate',
       icon: '/stats-canada.svg',
-      bgClass: 'from-emerald-700 to-emerald-600'
+      bgClass: 'from-emerald-700/80 to-emerald-600/80'
     },
   ];
 
   return (
     <section className="section relative py-20 md:py-28 overflow-hidden">
-      {/* Background image with reduced opacity overlay */}
+      {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="https://images.unsplash.com/photo-1581093458791-9a03178b9d78?q=80&w=2070&auto=format&fit=crop"
+          src="/medical-statistics-bg.jpg" 
           alt="Medical students in classroom" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/75 to-emerald-800/75"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/90 to-emerald-800/90"></div>
       </div>
       
       <div className="container-wide relative z-10">
@@ -67,7 +67,7 @@ const StatisticsBand = () => {
               className="reveal transform transition-all duration-500 hover:-translate-y-2"
               style={{animationDelay: `${index * 0.1}s`}}
             >
-              <div className={`flex flex-col items-center p-8 bg-gradient-to-br ${stat.bgClass} backdrop-blur-md rounded-2xl h-full border border-emerald-500/30 hover:border-emerald-400/70 transition-all duration-300 shadow-lg`}>
+              <div className={`flex flex-col items-center p-8 bg-gradient-to-br ${stat.bgClass} backdrop-blur-sm rounded-2xl h-full border border-emerald-500/30 hover:border-emerald-400/70 transition-all duration-300 shadow-lg`}>
                 <div className="mb-6 bg-white/20 p-4 rounded-full">
                   <img src={stat.icon || '/icon-stats.svg'} alt="" className="w-12 h-12" />
                 </div>
@@ -88,7 +88,7 @@ const StatisticsBand = () => {
               {stats.map((stat, index) => (
                 <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                   <div className="p-1">
-                    <div className={`flex flex-col items-center p-8 bg-gradient-to-br ${stat.bgClass} backdrop-blur-md rounded-2xl h-full border border-emerald-500/30 hover:border-emerald-400/70 transition-all duration-300 shadow-lg`}>
+                    <div className={`flex flex-col items-center p-8 bg-gradient-to-br ${stat.bgClass} backdrop-blur-sm rounded-2xl h-full border border-emerald-500/30 hover:border-emerald-400/70 transition-all duration-300 shadow-lg`}>
                       <div className="mb-6 bg-white/20 p-4 rounded-full">
                         <img src={stat.icon || '/icon-stats.svg'} alt="" className="w-12 h-12" />
                       </div>

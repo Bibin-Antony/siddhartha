@@ -5,8 +5,10 @@ import Hero from '@/components/Hero';
 import ThreeStepProcess from '@/components/ThreeStepProcess';
 import About from '@/components/About';
 import ProgramsSnapshot from '@/components/ProgramsSnapshot';
-import StatsBand from '@/components/StatsBand';
+import StatisticsBand from '@/components/StatisticsBand';
 import AdmissionsForm from '@/components/AdmissionsForm';
+import Gallery from '@/components/Gallery';
+import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import NotificationBanner from '@/components/NotificationBanner';
@@ -14,7 +16,7 @@ import NotificationBanner from '@/components/NotificationBanner';
 const Index = () => {
   // Update page title
   useEffect(() => {
-    document.title = "Siddhartha Global & Avalon University - Medical Education Pathway";
+    document.title = "Siddhartha Global & Avalon University - Empowering Future Doctors";
   }, []);
 
   // Scroll to section if hash is present in URL
@@ -30,25 +32,9 @@ const Index = () => {
     }
   }, []);
 
-  // Fix for scroll reveal animation
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => {
-      observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
+      <NotificationBanner />
       <Navbar />
       
       <ScrollReveal>
@@ -57,8 +43,10 @@ const Index = () => {
           <ThreeStepProcess />
           <About />
           <ProgramsSnapshot />
-          <StatsBand />
+          <StatisticsBand />
           <AdmissionsForm />
+          <Gallery />
+          <Testimonials />
         </main>
       </ScrollReveal>
       

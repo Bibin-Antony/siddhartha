@@ -1,53 +1,63 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { Check } from 'lucide-react';
 
 const About = () => {
+  const highlights = [
+    'Accredited by CAAM-HP & ACCM',
+    'US clinical rotations',
+    'Competitive tuition',
+    'Supportive learning environment',
+    'Global recognition',
+    'Expert faculty mentors'
+  ];
+
   return (
-    <section id="about" className="py-16 bg-white">
+    <section id="about" className="section py-24 bg-white">
       <div className="container-wide">
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Left column with image */}
-          <div className="lg:w-1/3 reveal">
-            <div className="relative rounded-xl overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="reveal">
+            <div className="relative rounded-xl shadow-2xl overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1613066576681-71d9ea240fc9?q=80&w=2070&auto=format&fit=crop" 
+                src="/campus-building.jpg" 
                 alt="Siddhartha Global Campus" 
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  console.error("Image failed to load");
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1568792923760-d70635a89fdc?q=80&w=2070&auto=format&fit=crop";
-                }}
               />
+              <div className="absolute inset-0 bg-gradient-to-tr from-emerald-700/40 to-transparent"></div>
             </div>
           </div>
           
-          {/* Right column with content */}
-          <div className="lg:w-2/3 reveal delay-200">
-            <h2 className="text-emerald-800 mb-4 text-4xl font-bold flex items-center">
-              <span className="text-orange-500 mr-2">50+</span> Years of Distinctive Learning
+          <div className="reveal delay-200">
+            <h2 className="text-emerald-800 mb-4 text-4xl font-bold">
+              <span className="relative">
+                50+ Years
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-emerald-400"></span>
+              </span>
+              {" "}of Distinctive Learning
             </h2>
-            
-            <p className="text-gray-700 mb-4">
-              Collaborative effort to establish a distinctive pathway to the Pre-MD program in the USA
+            <p className="text-gray-700 mb-8 text-lg">
+              Siddhartha Academy of Higher Education has delivered distinctive learning for 
+              over five decades. Through a unique partnership with fully-accredited Avalon 
+              University School of Medicine, we offer an alternative, globally recognised 
+              pathway to an MD.
             </p>
             
-            <p className="text-gray-700 mb-4">
-              For ages, Siddhartha Academy of Higher education helps all minds in Vijayawada to learn for Academic learning alike. As a data suggests, only about 4% of the students make it through the NEET examinations. In this potentially relevant Caribbean medical school, to offer a simple opportunity for aspiring doctors. The exposure is vast and Caribbean-quality patients very efficient for an MD degree. This partnership ensures that students benefit from consistent program, completion, tuition, and a pathway towards a successful career.
-            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              {highlights.map((item, index) => (
+                <div key={index} className="flex items-start space-x-3">
+                  <div className="mt-1 bg-emerald-100 rounded-full p-1.5">
+                    <Check className="h-4 w-4 text-emerald-700" />
+                  </div>
+                  <span className="text-gray-700">{item}</span>
+                </div>
+              ))}
+            </div>
             
-            <p className="text-gray-700 mb-5">
-              Additionally, CAAM-HP is the legally constituted body established in 2003 that grants accreditation to medical, dental, veterinary and other health professions programs leading to professional or academic awards in CARICOM member states. This international recognition provides the potential for academic placements both in the US and around the world.
-            </p>
-
-            <p className="text-gray-700 mb-6">
-              Another reason to attend Avalon University School of Medicine, which is one of the best Caribbean medical schools, is that students can transfer from intermediate US medical schools; most of these universities have some sort of U.S. medical alliance, in which case their institutions and faculty are connected to U.S. medical schools. Moreover, the M.D. diploma medical degree holder is eligible to practice in all 50 U.S. states and territories. The M.D. degree that is obtained in the Caribbean is regarded as equal to public M.D. and other degrees from institutions in the US.
-            </p>
-            
-            <Button className="bg-orange-500 hover:bg-orange-600 text-white">
-              Read More <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <div className="bg-emerald-50 border-l-4 border-emerald-700 p-6 rounded-r-lg">
+              <p className="text-emerald-800 italic">
+                "Our mission is to provide an accessible pathway to medical education without compromising on quality or recognition."
+              </p>
+            </div>
           </div>
         </div>
       </div>
