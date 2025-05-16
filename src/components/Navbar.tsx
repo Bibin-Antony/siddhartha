@@ -11,7 +11,6 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,21 +28,15 @@ const Navbar = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+    // Initialize the scroll state on page load
+    handleScroll();
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   const isHomePage = location.pathname === '/';
-
-  const scrollToSection = (id: string) => {
-    setMobileMenuOpen(false);
-    if (isHomePage) {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    } else {
-      window.location.href = `/#${id}`;
-    }
-  };
 
   return (
     <>
@@ -63,8 +56,13 @@ const Navbar = () => {
         </div>
       </div>
 
-      <nav className={`navbar ${isScrolled || !isHomePage ? 'navbar-solid' : 'navbar-transparent'}`}>
-        <div className="container-wide flex items-center justify-between py-4">
+      {/* Main navbar */}
+      <nav 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled || !isHomePage ? 'bg-white shadow-md py-3' : 'bg-transparent py-4 mt-8'
+        }`}
+      >
+        <div className="container-wide flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
@@ -88,160 +86,149 @@ const Navbar = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={`${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}>
+                  <NavigationMenuTrigger className={`${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} bg-transparent hover:bg-transparent focus:bg-transparent`}>
                     About Us
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/about"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-                          >
-                            <div className="text-sm font-medium leading-none">Overview</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Learn about our mission and vision
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
+                        <Link
+                          to="/about"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-sm font-medium leading-none">Overview</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Learn about our mission and vision
+                          </p>
+                        </Link>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/about/advantage"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-                          >
-                            <div className="text-sm font-medium leading-none">The SG-Avalon Advantage</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Discover what sets us apart
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
+                        <Link
+                          to="/about/advantage"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-sm font-medium leading-none">The SG-Avalon Advantage</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Discover what sets us apart
+                          </p>
+                        </Link>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/about/message-ssahe"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-                          >
-                            <div className="text-sm font-medium leading-none">Message from SSAHE</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Words from our leadership
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
+                        <Link
+                          to="/about/message-ssahe"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-sm font-medium leading-none">Message from SSAHE</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Words from our leadership
+                          </p>
+                        </Link>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/about/message-avalon"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-                          >
-                            <div className="text-sm font-medium leading-none">Message from Avalon</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Insights from our Caribbean partner
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
+                        <Link
+                          to="/about/message-avalon"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-sm font-medium leading-none">Message from Avalon</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Insights from our Caribbean partner
+                          </p>
+                        </Link>
                       </li>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={`${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}>
+                  <NavigationMenuTrigger className={`${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} bg-transparent hover:bg-transparent focus:bg-transparent`}>
                     Programs
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                       <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/programs/bs-md"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-                          >
-                            <div className="text-sm font-medium leading-none">Integrated BS/MD Program</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Alternative path to become a doctor
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
+                        <Link
+                          to="/programs/bs-md"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-sm font-medium leading-none">Integrated BS/MD Program</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Alternative path to become a doctor
+                          </p>
+                        </Link>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/programs/process"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-                          >
-                            <div className="text-sm font-medium leading-none">The Process</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Learn about our admission process
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
+                        <Link
+                          to="/programs/process"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-sm font-medium leading-none">The Process</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Learn about our admission process
+                          </p>
+                        </Link>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/programs/benefits"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-                          >
-                            <div className="text-sm font-medium leading-none">Key Benefits</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Advantages of our programs
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
+                        <Link
+                          to="/programs/benefits"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-sm font-medium leading-none">Key Benefits</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Advantages of our programs
+                          </p>
+                        </Link>
                       </li>
                       <li>
-                        <NavigationMenuLink asChild>
-                          <Link
-                            to="/programs/faq"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
-                          >
-                            <div className="text-sm font-medium leading-none">FAQ</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Common questions answered
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
+                        <Link
+                          to="/programs/faq"
+                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-sm font-medium leading-none">FAQ</div>
+                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                            Common questions answered
+                          </p>
+                        </Link>
                       </li>
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link 
-                      to="/admissions"
-                      className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
-                    >
-                      Admissions
-                    </Link>
-                  </NavigationMenuLink>
+                  <Link 
+                    to="/admissions"
+                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Admissions
+                  </Link>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link 
-                      to="/info"
-                      className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
-                    >
-                      Useful Information
-                    </Link>
-                  </NavigationMenuLink>
+                  <Link 
+                    to="/info"
+                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Useful Information
+                  </Link>
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuLink asChild>
-                    <Link 
-                      to="/contact"
-                      className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
-                    >
-                      Contact Us
-                    </Link>
-                  </NavigationMenuLink>
+                  <Link 
+                    to="/contact"
+                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Contact Us
+                  </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
@@ -251,7 +238,7 @@ const Navbar = () => {
             <Link to="/admissions">
               <Button 
                 variant={isScrolled || !isHomePage ? "default" : "secondary"} 
-                className={isScrolled || !isHomePage ? "bg-emerald-700 hover:bg-emerald-800" : "border-white text-white hover:bg-white/20"}
+                className={isScrolled || !isHomePage ? "bg-emerald-700 hover:bg-emerald-800 text-white" : "bg-white text-emerald-700 hover:bg-white/90"}
               >
                 Apply Now
               </Button>
@@ -276,7 +263,7 @@ const Navbar = () => {
         
         {/* Mobile menu, show/hide based on menu state */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white shadow-lg absolute w-full z-50">
+          <div className="md:hidden bg-white shadow-lg absolute w-full z-50 top-full mt-1">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <div className="px-3 py-2 text-gray-700 font-medium">About Us</div>
               <Link 
@@ -365,7 +352,7 @@ const Navbar = () => {
               <Link to="/admissions">
                 <Button 
                   variant="default" 
-                  className="w-full bg-emerald-700 hover:bg-emerald-800 mt-4"
+                  className="w-full bg-emerald-700 hover:bg-emerald-800 mt-4 text-white"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Apply Now

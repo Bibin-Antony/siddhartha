@@ -97,6 +97,7 @@ const Hero = () => {
                   alt="Medical Students" 
                   className="w-full h-auto"
                   onError={(e) => {
+                    // Higher quality medical students fallback image
                     e.currentTarget.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
                     e.currentTarget.onerror = null;
                   }}

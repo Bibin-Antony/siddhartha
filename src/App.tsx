@@ -11,6 +11,7 @@ import ProgramsPage from "./pages/ProgramsPage";
 import AdmissionsPage from "./pages/AdmissionsPage";
 import ContactPage from "./pages/ContactPage";
 import BSMDProgram from "./pages/programs/BSMDProgram";
+import UsefulInfoPage from "./pages/UsefulInfoPage";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/programs" element={<ProgramsPage />} />
           <Route path="/programs/bs-md" element={<BSMDProgram />} />
           <Route path="/admissions" element={<AdmissionsPage />} />
+          <Route path="/info" element={<UsefulInfoPage />} />
           <Route path="/contact" element={<ContactPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

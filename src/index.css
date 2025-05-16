@@ -130,6 +130,37 @@
 }
 
 /* Custom Animations for Scroll Reveal */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
 .delay-100 {
   animation-delay: 0.1s;
 }
@@ -150,6 +181,10 @@
   animation-delay: 0.5s;
 }
 
+.delay-1000 {
+  animation-delay: 1s;
+}
+
 /* Navbar transition */
 .navbar {
   @apply fixed top-0 left-0 right-0 z-50 transition-all duration-300;
@@ -162,3 +197,14 @@
 .navbar-solid {
   @apply bg-white shadow-md;
 }
+
+/* Fix for Navigation Menu Items */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+.top-contact-bar {
+  position: relative;
+  z-index: 60;
+}
+
