@@ -8,62 +8,59 @@ const ProgramsSnapshot = () => {
   const programs = [
     {
       title: 'Integrated BS/MD Program',
-      description: 'Alternative path to pursue your dream of becoming a doctor.',
+      description: 'Find out all you need to know about becoming a doctor.',
       icon: BookOpen,
       color: 'bg-emerald-100 text-emerald-700',
       link: '#',
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop',
-      imageAlt: 'Medical student learning at desk with stethoscope and medical books'
+      image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=2070&auto=format&fit=crop',
+      imageAlt: 'Medical students in a lab'
     },
     {
       title: 'The Process',
-      description: 'Admission open only for the Fall semester in this joint venture.',
+      description: 'Admission is only for the Fall semester in this joint venture.',
       icon: Users,
       color: 'bg-emerald-100 text-emerald-700',
       link: '#',
-      image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop',
-      imageAlt: 'Group of medical students collaborating on research project'
+      image: 'https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=2070&auto=format&fit=crop',
+      imageAlt: 'Group of medical students collaborating'
     },
     {
       title: 'Key Benefits',
-      description: 'USMLE preparation, qualified faculty, and modern facilities.',
+      description: 'We provide you with your choice of learning option.',
       icon: Check,
       color: 'bg-emerald-100 text-emerald-700',
       link: '#',
-      image: 'https://images.unsplash.com/photo-1643202494693-c77f5cec8b8d?q=80&w=2080&auto=format&fit=crop',
-      imageAlt: 'Medical student benefiting from advanced medical technology'
+      image: 'https://images.unsplash.com/photo-1560582861-45078880e48e?q=80&w=2074&auto=format&fit=crop',
+      imageAlt: 'Medical benefits visualization'
     },
     {
       title: 'FAQ',
-      description: 'Find answers to frequently asked questions about our programs.',
+      description: 'Questions about becoming a doctor.',
       icon: HelpCircle,
       color: 'bg-emerald-100 text-emerald-700',
       link: '#',
-      image: 'https://images.unsplash.com/photo-1576671081837-49000212a370?q=80&w=2080&auto=format&fit=crop',
-      imageAlt: 'Student consulting with academic advisor about medical program'
+      image: 'https://images.unsplash.com/photo-1484069560501-87d72b0c3669?q=80&w=2070&auto=format&fit=crop',
+      imageAlt: 'Students consulting with academic advisor'
     }
   ];
 
   return (
-    <section id="programs" className="section bg-gradient-to-b from-white to-emerald-50 py-24">
+    <section id="programs" className="py-16 bg-gray-50">
       <div className="container-wide">
-        <div className="text-center mb-16 reveal">
-          <h2 className="text-emerald-800 text-4xl md:text-5xl font-bold mb-6">
-            Programs Snapshot
+        <div className="mb-10 reveal">
+          <h2 className="text-emerald-800 text-3xl font-bold mb-4">
+            Our Global Program
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Explore our comprehensive medical education pathways designed for student success.
-          </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {programs.map((program, index) => (
             <Card 
               key={index} 
-              className="reveal border-none shadow-lg hover:shadow-xl transition-all duration-300 bg-white overflow-hidden transform hover:-translate-y-2"
+              className="reveal border-none shadow-md hover:shadow-xl transition-all duration-300 bg-white overflow-hidden"
               style={{animationDelay: `${index * 0.1}s`}}
             >
-              <div className="h-40 relative overflow-hidden">
+              <div className="h-48 relative overflow-hidden">
                 <img
                   src={program.image}
                   alt={program.imageAlt}
@@ -71,35 +68,20 @@ const ProgramsSnapshot = () => {
                   loading="lazy"
                   onError={(e) => {
                     console.error(`Image failed to load: ${program.image}`);
-                    e.currentTarget.style.display = "none";
-                    e.currentTarget.parentElement!.classList.add("bg-emerald-100");
-                    e.currentTarget.parentElement!.classList.add("flex");
-                    e.currentTarget.parentElement!.classList.add("items-center");
-                    e.currentTarget.parentElement!.classList.add("justify-center");
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080&auto=format&fit=crop";
                   }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <h3 className="text-xl font-bold text-white">{program.title}</h3>
-                </div>
               </div>
-              <div className="h-2 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
-              <CardContent className="p-6">
-                <div className="flex flex-col items-center text-center">
-                  <div className={`${program.color} p-3 rounded-full mb-4 mt-2`}>
-                    <program.icon size={24} />
-                  </div>
-                  
-                  <p className="text-gray-600 mb-6">{program.description}</p>
+              <CardContent className="p-5">
+                <div className="flex flex-col">
+                  <h3 className="text-lg font-bold text-emerald-800 mb-2">{program.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4">{program.description}</p>
                   
                   <Button 
                     variant="ghost" 
-                    className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50 mt-auto group"
+                    className="text-orange-500 hover:text-orange-600 hover:bg-orange-50 px-0 justify-start mt-auto group"
                   >
-                    <a href={program.link} className="flex items-center">
-                      Learn More 
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </a>
+                    Read More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </div>
               </CardContent>

@@ -5,10 +5,8 @@ import Hero from '@/components/Hero';
 import ThreeStepProcess from '@/components/ThreeStepProcess';
 import About from '@/components/About';
 import ProgramsSnapshot from '@/components/ProgramsSnapshot';
-import StatisticsBand from '@/components/StatisticsBand';
+import StatsBand from '@/components/StatsBand';
 import AdmissionsForm from '@/components/AdmissionsForm';
-import Gallery from '@/components/Gallery';
-import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import NotificationBanner from '@/components/NotificationBanner';
@@ -16,7 +14,7 @@ import NotificationBanner from '@/components/NotificationBanner';
 const Index = () => {
   // Update page title
   useEffect(() => {
-    document.title = "Siddhartha Global & Avalon University - Empowering Future Doctors";
+    document.title = "Siddhartha Global & Avalon University - Medical Education Pathway";
   }, []);
 
   // Scroll to section if hash is present in URL
@@ -51,7 +49,6 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <NotificationBanner />
       <Navbar />
       
       <ScrollReveal>
@@ -60,10 +57,8 @@ const Index = () => {
           <ThreeStepProcess />
           <About />
           <ProgramsSnapshot />
-          <StatisticsBand />
+          <StatsBand />
           <AdmissionsForm />
-          <Gallery />
-          <Testimonials />
         </main>
       </ScrollReveal>
       

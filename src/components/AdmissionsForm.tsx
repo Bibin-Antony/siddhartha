@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent } from '@/components/ui/card';
 
@@ -10,17 +10,16 @@ const AdmissionsForm = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [requirement, setRequirement] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const eligibilityCriteria = [
-    '12th grade completion or equivalent',
-    'GPA ≥ 3.0/60%',
-    'Official transcripts',
-    'Personal statement',
-    'Letters of recommendation',
-    'Video interview',
-    'MCAT not required'
+    'GPA ≥ 3.0 (60%)',
+    'Transcripts',
+    'Statement of Purpose',
+    'Letter of Recommendation',
+    'Video Interview (MCAT not required)'
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -33,6 +32,7 @@ const AdmissionsForm = () => {
       setEmail('');
       setName('');
       setPhone('');
+      setRequirement('');
       toast({
         title: "Application initiated!",
         description: "We'll contact you shortly with next steps.",
@@ -41,35 +41,26 @@ const AdmissionsForm = () => {
   };
 
   return (
-    <section id="admission-form" className="section py-28 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-emerald-100 rounded-full opacity-20"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-100 rounded-full opacity-20"></div>
-      </div>
-      
-      <div className="container-wide relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="reveal order-2 md:order-1">
-            <h2 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-6">
-              <span className="relative">
-                Start Your Medical Journey
-                <span className="absolute bottom-1 left-0 w-full h-1 bg-emerald-400"></span>
-              </span>
-              {" "}Today
+    <section id="admission-form" className="py-16 bg-white">
+      <div className="container-wide">
+        <div className="grid md:grid-cols-2 gap-12">
+          <div className="reveal">
+            <h2 className="text-3xl font-bold text-emerald-800 mb-6">
+              Start your Admission process by filling out this form. Our team will revert back shortly.
             </h2>
-            <p className="text-gray-600 mb-8 text-lg">
-              Take the first step towards your medical career by applying to our globally recognized program.
-              Our admissions team will guide you through every step of the process.
+            
+            <p className="text-gray-600 mb-8">
+              Note: Admission is only for the fall semester in this joint venture.
             </p>
             
-            <Card className="bg-emerald-50 border-none shadow-md mb-8">
-              <CardContent className="p-8">
-                <h3 className="text-emerald-800 text-2xl font-bold mb-6">Eligibility Criteria</h3>
-                <ul className="space-y-4">
+            <Card className="bg-gray-50 border-none shadow-md mb-8">
+              <CardContent className="p-6">
+                <h3 className="text-emerald-800 text-xl font-bold mb-4">Eligibility Criteria</h3>
+                <ul className="space-y-3">
                   {eligibilityCriteria.map((criterion, index) => (
                     <li key={index} className="flex items-center space-x-3">
                       <div className="bg-emerald-100 rounded-full p-1.5 text-emerald-700">
-                        <Check className="h-5 w-5" />
+                        <Check className="h-4 w-4" />
                       </div>
                       <span className="text-gray-700">{criterion}</span>
                     </li>
@@ -78,29 +69,20 @@ const AdmissionsForm = () => {
               </CardContent>
             </Card>
             
-            <div className="relative">
-              <img 
-                src="/admissions-team.jpg" 
-                alt="Our Admissions Team" 
-                className="rounded-xl shadow-xl"
-              />
-              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl border-l-4 border-emerald-500">
-                <div className="text-base font-bold text-emerald-700">24/7 Support</div>
-                <div className="text-sm text-gray-500">We're here to help you succeed</div>
-              </div>
-            </div>
+            <p className="text-gray-600">
+              Admission is only for the Fall semester in this joint venture.
+            </p>
           </div>
           
-          <div className="reveal order-1 md:order-2 delay-200">
-            <Card className="shadow-2xl rounded-xl border-none overflow-hidden">
-              <div className="h-3 bg-gradient-to-r from-emerald-600 to-emerald-400"></div>
+          <div className="reveal delay-200">
+            <Card className="shadow-xl rounded-lg border-none overflow-hidden bg-teal-800 text-white">
               <CardContent className="p-8">
-                <h3 className="text-2xl font-bold mb-8 text-emerald-800 text-center">Apply Now</h3>
+                <h3 className="text-2xl font-bold mb-6 text-center">Apply Now</h3>
                 <form onSubmit={handleSubmit}>
-                  <div className="space-y-6">
+                  <div className="space-y-5">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Full Name <span className="text-red-500">*</span>
+                      <label htmlFor="name" className="block text-sm font-medium mb-2">
+                        Full Name <span className="text-red-400">*</span>
                       </label>
                       <Input 
                         id="name" 
@@ -109,13 +91,13 @@ const AdmissionsForm = () => {
                         required 
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="border-gray-300 focus:border-emerald-500 h-12"
+                        className="border-gray-300 bg-white/90 text-gray-800 focus:border-orange-500 h-12"
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email Address <span className="text-red-500">*</span>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Email Address <span className="text-red-400">*</span>
                       </label>
                       <Input 
                         id="email" 
@@ -124,13 +106,13 @@ const AdmissionsForm = () => {
                         required 
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="border-gray-300 focus:border-emerald-500 h-12"
+                        className="border-gray-300 bg-white/90 text-gray-800 focus:border-orange-500 h-12"
                       />
                     </div>
                     
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone Number <span className="text-red-500">*</span>
+                      <label htmlFor="phone" className="block text-sm font-medium mb-2">
+                        Phone Number <span className="text-red-400">*</span>
                       </label>
                       <Input 
                         id="phone" 
@@ -139,28 +121,34 @@ const AdmissionsForm = () => {
                         required 
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
-                        className="border-gray-300 focus:border-emerald-500 h-12"
+                        className="border-gray-300 bg-white/90 text-gray-800 focus:border-orange-500 h-12"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="requirement" className="block text-sm font-medium mb-2">
+                        Requirement <span className="text-red-400">*</span>
+                      </label>
+                      <Input 
+                        id="requirement" 
+                        type="text" 
+                        placeholder="Tell us about your requirements" 
+                        required 
+                        value={requirement}
+                        onChange={(e) => setRequirement(e.target.value)}
+                        className="border-gray-300 bg-white/90 text-gray-800 focus:border-orange-500 h-12"
                       />
                     </div>
                     
                     <Button 
                       type="submit" 
-                      className="w-full h-12 bg-emerald-700 hover:bg-emerald-800 group text-base font-medium"
+                      className="w-full h-12 bg-orange-500 hover:bg-orange-600 text-white text-base font-medium"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? 'Submitting...' : (
-                        <>
-                          Submit Application 
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </>
-                      )}
+                      {isSubmitting ? 'Submitting...' : 'Submit Now'}
                     </Button>
                   </div>
                 </form>
-                
-                <div className="mt-6 text-center text-sm text-gray-500">
-                  By submitting this form, you agree to our <a href="#" className="text-emerald-700 hover:underline">Privacy Policy</a> and <a href="#" className="text-emerald-700 hover:underline">Terms of Service</a>.
-                </div>
               </CardContent>
             </Card>
           </div>
