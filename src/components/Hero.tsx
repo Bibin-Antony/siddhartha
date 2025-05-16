@@ -10,28 +10,41 @@ const Hero = () => {
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
       
-      {/* Hero image with fallback */}
-      <div className="absolute inset-0 z-0">
+      {/* Hero image with multiple fallbacks for reliability */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
         <img 
           src="/hero-students.jpg" 
           alt="Medical students in graduation" 
           className="w-full h-full object-cover"
           onError={(e) => {
+            // First fallback - try unsplash image
+            console.log("Primary image failed, trying fallback #1");
             e.currentTarget.src = "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070";
-            e.currentTarget.onerror = null;
+            // Set up second fallback in case the first one fails
+            e.currentTarget.onerror = (e2) => {
+              console.log("First fallback failed, trying fallback #2");
+              // Second fallback - another unsplash image
+              const imgElement = e2.currentTarget as HTMLImageElement;
+              imgElement.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
+              // Third fallback in case the second one fails
+              imgElement.onerror = (e3) => {
+                console.log("Second fallback failed, using gradient fallback");
+                // Final fallback - hide the image and rely on the gradient background
+                const finalImgElement = e3.currentTarget as HTMLImageElement;
+                finalImgElement.style.display = 'none';
+              };
+            };
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-800/90 to-emerald-700/80"></div>
+        {/* Enhanced overlay with gradient for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/95 to-emerald-700/90"></div>
       </div>
       
-      {/* Green gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-800 to-emerald-700 opacity-90"></div>
-      
-      {/* Hero content */}
-      <div className="container-wide relative z-10 pt-24">
+      {/* Hero content with improved styling */}
+      <div className="container-wide relative z-10 pt-24 md:pt-28 lg:pt-24">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div className="text-white reveal">
-            <div className="inline-block mb-4 px-4 py-1.5 bg-emerald-600/30 rounded-full border border-emerald-500/30">
+            <div className="inline-block mb-4 px-4 py-1.5 bg-emerald-600/40 rounded-full border border-emerald-500/40 backdrop-blur-sm">
               <span className="text-sm font-medium text-emerald-100">"Charting a New Course to Medical Excellence" — Trust the experts.</span>
             </div>
             
@@ -51,7 +64,7 @@ const Hero = () => {
               <Link to="/about">
                 <Button 
                   size="lg" 
-                  className="bg-white text-emerald-700 hover:bg-emerald-50 transform hover:-translate-y-1 transition-all text-base font-semibold px-8 h-14"
+                  className="bg-white text-emerald-700 hover:bg-emerald-50 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-8 h-14 rounded-md shadow-lg"
                 >
                   About Siddhartha Global
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -62,26 +75,26 @@ const Hero = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-2 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all text-base font-semibold px-8 h-14"
+                  className="border-2 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-8 h-14 rounded-md"
                 >
                   Contact Us
                 </Button>
               </Link>
             </div>
             
-            {/* Highlight stats */}
-            <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 gap-6 max-w-lg">
-              <div className="bg-emerald-600/30 p-4 rounded-lg border border-emerald-500/30 backdrop-blur-sm">
+            {/* Highlight stats with refined styling */}
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-lg">
+              <div className="bg-emerald-600/40 p-4 rounded-lg border border-emerald-500/40 backdrop-blur-sm shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="font-bold text-2xl text-white">50+</div>
                 <div className="text-emerald-100 text-sm">Years of Experience</div>
               </div>
               
-              <div className="bg-emerald-600/30 p-4 rounded-lg border border-emerald-500/30 backdrop-blur-sm">
+              <div className="bg-emerald-600/40 p-4 rounded-lg border border-emerald-500/40 backdrop-blur-sm shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="font-bold text-2xl text-white">100%</div>
                 <div className="text-emerald-100 text-sm">Global Recognition</div>
               </div>
               
-              <div className="bg-emerald-600/30 p-4 rounded-lg border border-emerald-500/30 backdrop-blur-sm">
+              <div className="bg-emerald-600/40 p-4 rounded-lg border border-emerald-500/40 backdrop-blur-sm shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="font-bold text-2xl text-white">5000+</div>
                 <div className="text-emerald-100 text-sm">Successful Alumni</div>
               </div>
@@ -91,19 +104,20 @@ const Hero = () => {
           <div className="hidden lg:block reveal delay-200">
             <div className="relative">
               <div className="absolute -top-5 -left-5 w-72 h-72 bg-emerald-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
-              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-8 border-white/10">
+              <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-8 border-white/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-emerald-500/30">
                 <img 
                   src="/medical-students.jpg" 
                   alt="Medical Students" 
                   className="w-full h-auto"
                   onError={(e) => {
                     // Higher quality medical students fallback image
+                    console.log("Secondary image failed, trying fallback");
                     e.currentTarget.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
                     e.currentTarget.onerror = null;
                   }}
                 />
-                {/* Feature badge */}
-                <div className="absolute top-6 right-6 bg-white py-2 px-4 rounded-full shadow-lg">
+                {/* Feature badge with enhanced styling */}
+                <div className="absolute top-6 right-6 bg-white py-2 px-4 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
                   <span className="text-sm font-semibold text-emerald-700">CAAM-HP Accredited</span>
                 </div>
               </div>
@@ -112,8 +126,8 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center">
+        {/* Refined scroll indicator with animation */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden md:flex flex-col items-center animate-pulse-gentle">
           <span className="text-white/70 text-sm mb-2">Scroll to explore</span>
           <div className="w-px h-12 bg-gradient-to-b from-white/0 to-white/70"></div>
         </div>

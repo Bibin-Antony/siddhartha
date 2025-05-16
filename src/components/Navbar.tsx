@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -40,25 +39,25 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top contact bar */}
-      <div className="bg-emerald-800 text-white py-2 hidden md:block">
-        <div className="container-wide flex justify-between items-center">
-          <div className="text-sm flex items-center space-x-4">
-            <a href="tel:+919606974400" className="flex items-center hover:text-emerald-200 transition-colors">
+      {/* Top contact bar - fixed positioning to prevent overlap */}
+      <div className="bg-emerald-800 text-white py-2 w-full z-50 top-contact-bar">
+        <div className="container-wide flex flex-wrap justify-between items-center">
+          <div className="text-sm flex flex-wrap items-center space-x-2 md:space-x-4">
+            <a href="tel:+919606974400" className="flex items-center hover:text-emerald-200 transition-colors py-1">
               <Phone className="h-3 w-3 mr-1" />
-              +91 9606974400
+              <span className="hidden sm:inline">+91 9606974400</span>
             </a>
-            <a href="mailto:admissions@siddharthaglobal.com" className="flex items-center hover:text-emerald-200 transition-colors">
+            <a href="mailto:admissions@siddharthaglobal.com" className="flex items-center hover:text-emerald-200 transition-colors py-1">
               <Mail className="h-3 w-3 mr-1" />
-              admissions@siddharthaglobal.com
+              <span className="hidden sm:inline">admissions@siddharthaglobal.com</span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Main navbar */}
+      {/* Main navbar - adjusted positioning and styling */}
       <nav 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled || !isHomePage ? 'bg-white shadow-md py-3' : 'bg-transparent py-4 mt-8'
         }`}
       >
@@ -81,12 +80,15 @@ const Navbar = () => {
             </Link>
           </div>
           
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - enhanced hover states and alignment */}
           <div className="hidden md:block">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={`${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} bg-transparent hover:bg-transparent focus:bg-transparent`}>
+                  <NavigationMenuTrigger 
+                    className={`${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} 
+                    bg-transparent hover:bg-transparent focus:bg-transparent transition-colors duration-200`}
+                  >
                     About Us
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -144,7 +146,10 @@ const Navbar = () => {
                 </NavigationMenuItem>
                 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className={`${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} bg-transparent hover:bg-transparent focus:bg-transparent`}>
+                  <NavigationMenuTrigger 
+                    className={`${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} 
+                    bg-transparent hover:bg-transparent focus:bg-transparent transition-colors duration-200`}
+                  >
                     Programs
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
@@ -204,7 +209,7 @@ const Navbar = () => {
                 <NavigationMenuItem>
                   <Link 
                     to="/admissions"
-                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} transition-colors duration-200`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Admissions
@@ -214,7 +219,7 @@ const Navbar = () => {
                 <NavigationMenuItem>
                   <Link 
                     to="/info"
-                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} transition-colors duration-200`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Useful Information
@@ -224,7 +229,7 @@ const Navbar = () => {
                 <NavigationMenuItem>
                   <Link 
                     to="/contact"
-                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'}`}
+                    className={`flex items-center px-3 py-2 text-sm ${isScrolled || !isHomePage ? 'text-gray-700 hover:text-emerald-700' : 'text-white hover:text-emerald-200'} transition-colors duration-200`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     Contact Us
@@ -238,7 +243,10 @@ const Navbar = () => {
             <Link to="/admissions">
               <Button 
                 variant={isScrolled || !isHomePage ? "default" : "secondary"} 
-                className={isScrolled || !isHomePage ? "bg-emerald-700 hover:bg-emerald-800 text-white" : "bg-white text-emerald-700 hover:bg-white/90"}
+                className={`${isScrolled || !isHomePage 
+                  ? "bg-emerald-700 hover:bg-emerald-800 text-white" 
+                  : "bg-white text-emerald-700 hover:bg-emerald-50"} 
+                  font-semibold px-6 py-2 rounded-md transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg`}
               >
                 Apply Now
               </Button>
@@ -261,9 +269,9 @@ const Navbar = () => {
           </div>
         </div>
         
-        {/* Mobile menu, show/hide based on menu state */}
+        {/* Mobile menu, show/hide based on menu state - improved styling */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-white shadow-lg absolute w-full z-50 top-full mt-1">
+          <div className="md:hidden bg-white shadow-lg absolute w-full z-50 top-full mt-1 rounded-b-lg max-h-[80vh] overflow-y-auto">
             <div className="px-2 pt-2 pb-3 space-y-1">
               <div className="px-3 py-2 text-gray-700 font-medium">About Us</div>
               <Link 

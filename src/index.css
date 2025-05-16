@@ -127,6 +127,24 @@
   .reveal.active {
     @apply animate-fade-in-up;
   }
+  
+  /* Enhanced hover effects for links */
+  .nav-link {
+    @apply relative;
+  }
+  
+  .nav-link:after {
+    @apply content-[''] absolute w-0 h-0.5 bg-emerald-500 left-0 bottom-0 transition-all duration-300 ease-in-out;
+  }
+  
+  .nav-link:hover:after {
+    @apply w-full;
+  }
+  
+  /* Button hover effects */
+  .button-hover {
+    @apply transition-all duration-300 hover:shadow-md transform hover:-translate-y-1;
+  }
 }
 
 /* Custom Animations for Scroll Reveal */
@@ -151,6 +169,22 @@
   100% {
     transform: translateY(0);
   }
+}
+
+/* Enhanced pulse animation for attention */
+@keyframes pulse-gentle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+}
+
+.animate-pulse-gentle {
+  animation: pulse-gentle 2s ease-in-out infinite;
 }
 
 .animate-fade-in-up {
@@ -208,3 +242,17 @@
   z-index: 60;
 }
 
+/* Improved button hover effects */
+.hover-glow:hover {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+}
+
+/* Image loading fade-in effect */
+.image-fade-in {
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+.image-fade-in.loaded {
+  opacity: 1;
+}
