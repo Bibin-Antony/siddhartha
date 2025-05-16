@@ -7,36 +7,43 @@ import PencilUnderline from './PencilUnderline';
 const Gallery = () => {
   const [activeImage, setActiveImage] = useState<null | string>(null);
 
+  // Updated gallery images with high-quality Unsplash fallbacks
   const images = [
     {
       src: '/gallery/campus-1.jpg',
       alt: 'Main Campus Building',
       size: 'large',
+      fallback: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070'
     },
     {
       src: '/gallery/classroom-1.jpg',
       alt: 'Modern Lecture Hall',
       size: 'small',
+      fallback: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=2070'
     },
     {
       src: '/gallery/lab-1.jpg',
       alt: 'Advanced Medical Laboratory',
       size: 'medium',
+      fallback: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2070'
     },
     {
       src: '/gallery/students-1.jpg',
       alt: 'International Students in Discussion',
       size: 'medium',
+      fallback: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070'
     },
     {
       src: '/gallery/curacao-1.jpg',
       alt: 'Beautiful Curaçao Campus',
       size: 'small',
+      fallback: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2070'
     },
     {
       src: '/gallery/doctor-1.jpg',
       alt: 'Clinical Training with Professionals',
       size: 'large',
+      fallback: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=2070'
     },
   ];
 
@@ -71,6 +78,11 @@ const Gallery = () => {
                   src={image.src} 
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  onError={(e) => {
+                    console.log(`Gallery image failed, using fallback for ${image.alt}`);
+                    const target = e.currentTarget;
+                    target.src = image.fallback;
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
                   <p className="text-white">{image.alt}</p>

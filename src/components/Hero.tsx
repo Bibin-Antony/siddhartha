@@ -16,21 +16,22 @@ const Hero = () => {
           src="/hero-students.jpg" 
           alt="Medical students in graduation" 
           className="w-full h-full object-cover"
-          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+          onError={(e) => {
             // First fallback - try unsplash image
             console.log("Primary image failed, trying fallback #1");
-            e.currentTarget.src = "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070";
+            const target = e.currentTarget;
+            target.src = "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070";
             // Set up second fallback in case the first one fails
-            e.currentTarget.onerror = (e2: React.SyntheticEvent<HTMLImageElement>) => {
+            target.onerror = (event) => {
               console.log("First fallback failed, trying fallback #2");
               // Second fallback - another unsplash image
-              const imgElement = e2.currentTarget;
+              const imgElement = event.currentTarget as HTMLImageElement;
               imgElement.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
               // Third fallback in case the second one fails
-              imgElement.onerror = (e3: React.SyntheticEvent<HTMLImageElement>) => {
+              imgElement.onerror = (event2) => {
                 console.log("Second fallback failed, using gradient fallback");
                 // Final fallback - hide the image and rely on the gradient background
-                const finalImgElement = e3.currentTarget;
+                const finalImgElement = event2.currentTarget as HTMLImageElement;
                 finalImgElement.style.display = 'none';
               };
             };
@@ -40,15 +41,15 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/95 to-emerald-700/90"></div>
       </div>
       
-      {/* Hero content with improved styling */}
-      <div className="container-wide relative z-10 pt-24 md:pt-28 lg:pt-24">
+      {/* Hero content with improved styling and mobile responsiveness */}
+      <div className="container-wide relative z-10 pt-20 md:pt-24 lg:pt-20 px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div className="text-white reveal">
             <div className="inline-block mb-4 px-4 py-1.5 bg-emerald-600/40 rounded-full border border-emerald-500/40 backdrop-blur-sm">
               <span className="text-sm font-medium text-emerald-100">"Charting a New Course to Medical Excellence" — Trust the experts.</span>
             </div>
             
-            <h1 className="text-white text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-white text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
               Empowering 
               <span className="relative ml-2">
                 Future Doctors
@@ -56,7 +57,7 @@ const Hero = () => {
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl font-light text-emerald-50 mb-10 max-w-xl">
+            <p className="text-lg sm:text-xl lg:text-2xl font-light text-emerald-50 mb-10 max-w-xl">
               Unlock your potential with an innovative pathway to an MD, tailored for driven individuals seeking a non-traditional route.
             </p>
             
@@ -75,14 +76,14 @@ const Hero = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-2 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-8 h-14 rounded-md"
+                  className="border-2 border-white text-white bg-transparent hover:bg-white/20 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-8 h-14 rounded-md"
                 >
                   Contact Us
                 </Button>
               </Link>
             </div>
             
-            {/* Highlight stats with refined styling */}
+            {/* Highlight stats with refined styling and improved mobile layout */}
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-lg">
               <div className="bg-emerald-600/40 p-4 rounded-lg border border-emerald-500/40 backdrop-blur-sm shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="font-bold text-2xl text-white">50+</div>
@@ -109,11 +110,12 @@ const Hero = () => {
                   src="/medical-students.jpg" 
                   alt="Medical Students" 
                   className="w-full h-auto"
-                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                  onError={(e) => {
                     // Higher quality medical students fallback image
                     console.log("Secondary image failed, trying fallback");
-                    e.currentTarget.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
-                    e.currentTarget.onerror = null;
+                    const target = e.currentTarget;
+                    target.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
+                    target.onerror = null;
                   }}
                 />
                 {/* Feature badge with enhanced styling */}
