@@ -16,21 +16,21 @@ const Hero = () => {
           src="/hero-students.jpg" 
           alt="Medical students in graduation" 
           className="w-full h-full object-cover"
-          onError={(e) => {
+          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
             // First fallback - try unsplash image
             console.log("Primary image failed, trying fallback #1");
             e.currentTarget.src = "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070";
             // Set up second fallback in case the first one fails
-            e.currentTarget.onerror = (e2) => {
+            e.currentTarget.onerror = (e2: React.SyntheticEvent<HTMLImageElement>) => {
               console.log("First fallback failed, trying fallback #2");
               // Second fallback - another unsplash image
-              const imgElement = e2.currentTarget as HTMLImageElement;
+              const imgElement = e2.currentTarget;
               imgElement.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
               // Third fallback in case the second one fails
-              imgElement.onerror = (e3) => {
+              imgElement.onerror = (e3: React.SyntheticEvent<HTMLImageElement>) => {
                 console.log("Second fallback failed, using gradient fallback");
                 // Final fallback - hide the image and rely on the gradient background
-                const finalImgElement = e3.currentTarget as HTMLImageElement;
+                const finalImgElement = e3.currentTarget;
                 finalImgElement.style.display = 'none';
               };
             };
@@ -109,7 +109,7 @@ const Hero = () => {
                   src="/medical-students.jpg" 
                   alt="Medical Students" 
                   className="w-full h-auto"
-                  onError={(e) => {
+                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                     // Higher quality medical students fallback image
                     console.log("Secondary image failed, trying fallback");
                     e.currentTarget.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
