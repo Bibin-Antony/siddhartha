@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Phone, Mail, Facebook, Linkedin, Instagram, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -35,6 +36,10 @@ const Footer = () => {
                   src="/logo-placeholder.svg" 
                   alt="Siddhartha Global & Avalon University" 
                   className="h-10 w-auto"
+                  onError={(e) => {
+                    e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5z'/%3E%3Cpath d='M2 17l10 5 10-5'/%3E%3Cpath d='M2 12l10 5 10-5'/%3E%3C/svg%3E";
+                    e.currentTarget.onerror = null;
+                  }}
                 />
                 <span className="text-lg font-semibold text-white">Siddhartha Global</span>
               </div>
@@ -54,29 +59,61 @@ const Footer = () => {
               </div>
             </div>
             
-            {/* Quick links */}
+            {/* About links */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+              <h3 className="text-lg font-semibold mb-4">About</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#about" className="text-emerald-100 hover:text-white transition-colors flex items-center">
-                    <span className="mr-2">→</span> About Us
-                  </a>
+                  <Link to="/about" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> Overview
+                  </Link>
                 </li>
                 <li>
-                  <a href="#programs" className="text-emerald-100 hover:text-white transition-colors flex items-center">
-                    <span className="mr-2">→</span> Programs
-                  </a>
+                  <Link to="/about/advantage" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> The SG-Avalon Advantage
+                  </Link>
                 </li>
                 <li>
-                  <a href="#admission-form" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                  <Link to="/about/message-ssahe" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> Message from SSAHE
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/about/message-avalon" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> Message from Avalon
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            
+            {/* Programs links */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Programs</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/programs/bs-md" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> Integrated BS/MD Program
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/programs/process" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> The Process
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/programs/benefits" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> Key Benefits
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/programs/faq" className="text-emerald-100 hover:text-white transition-colors flex items-center">
+                    <span className="mr-2">→</span> FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/admissions" className="text-emerald-100 hover:text-white transition-colors flex items-center">
                     <span className="mr-2">→</span> Admissions
-                  </a>
-                </li>
-                <li>
-                  <a href="#contact" className="text-emerald-100 hover:text-white transition-colors flex items-center">
-                    <span className="mr-2">→</span> Contact Us
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -104,14 +141,8 @@ const Footer = () => {
                   </span>
                 </div>
               </div>
-            </div>
-            
-            {/* Newsletter */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Stay Updated</h3>
-              <p className="text-emerald-100 mb-3">
-                Subscribe to our newsletter for updates on admissions and programs.
-              </p>
+              
+              <h3 className="text-lg font-semibold mt-6 mb-4">Newsletter</h3>
               <form className="flex" onSubmit={handleSubscribe}>
                 <div className="relative flex-grow">
                   <Input 
@@ -136,9 +167,9 @@ const Footer = () => {
               © {new Date().getFullYear()} Siddhartha Global & Avalon University. All rights reserved.
             </div>
             <div className="flex space-x-4 text-sm">
-              <a href="#" className="text-emerald-200 hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="text-emerald-200 hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="text-emerald-200 hover:text-white transition-colors">Sitemap</a>
+              <Link to="/privacy" className="text-emerald-200 hover:text-white transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="text-emerald-200 hover:text-white transition-colors">Terms of Service</Link>
+              <Link to="/sitemap" className="text-emerald-200 hover:text-white transition-colors">Sitemap</Link>
             </div>
           </div>
         </div>
@@ -153,12 +184,13 @@ const Footer = () => {
               <span className="font-semibold">Call Us</span>
             </a>
           </div>
-          <Button 
-            className="bg-emerald-700 hover:bg-emerald-800"
-            onClick={() => document.getElementById('admission-form')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Apply Now
-          </Button>
+          <Link to="/admissions">
+            <Button 
+              className="bg-emerald-700 hover:bg-emerald-800"
+            >
+              Apply Now
+            </Button>
+          </Link>
         </div>
       </div>
     </>

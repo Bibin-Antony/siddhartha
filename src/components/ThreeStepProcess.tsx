@@ -11,7 +11,8 @@ const ThreeStepProcess = () => {
       description: 'Equip yourself with the foundational skills and knowledge needed to succeed in your MD journey.',
       icon: Book,
       color: 'bg-emerald-600 text-white',
-      image: '/india-education.jpg'
+      image: '/india-education.jpg',
+      fallbackImage: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2071'
     },
     {
       id: 2,
@@ -19,7 +20,8 @@ const ThreeStepProcess = () => {
       description: 'Become a certified MD in the beautiful island of Curaçao at Avalon University.',
       icon: GraduationCap,
       color: 'bg-emerald-600 text-white',
-      image: '/curacao-campus.jpg'
+      image: '/curacao-campus.jpg',
+      fallbackImage: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070'
     },
     {
       id: 3,
@@ -27,7 +29,8 @@ const ThreeStepProcess = () => {
       description: 'Clinical rotations in the US with potential residency placements worldwide.',
       icon: Globe,
       color: 'bg-emerald-600 text-white',
-      image: '/medical-career.jpg'
+      image: '/medical-career.jpg',
+      fallbackImage: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2080'
     }
   ];
 
@@ -39,7 +42,7 @@ const ThreeStepProcess = () => {
             Give Wings to Your Dreams
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our three-step pathway connects Indian education to international medical practice.
+            A flexible and inclusive approach for aspiring doctors who may not fit the mold of traditional medical school routes.
           </p>
         </div>
         
@@ -56,6 +59,10 @@ const ThreeStepProcess = () => {
                       src={step.image} 
                       alt={step.title} 
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      onError={(e) => {
+                        e.currentTarget.src = step.fallbackImage;
+                        e.currentTarget.onerror = null;
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-50"></div>
                     <div className="absolute top-4 right-4 bg-white text-emerald-700 font-bold h-12 w-12 rounded-full flex items-center justify-center shadow-lg">

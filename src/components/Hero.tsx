@@ -2,12 +2,27 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
     <div className="relative bg-emerald-700 min-h-screen flex items-center">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
+      
+      {/* Hero image with fallback */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/hero-students.jpg" 
+          alt="Medical students in graduation" 
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src = "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070";
+            e.currentTarget.onerror = null;
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-emerald-800/90 to-emerald-700/80"></div>
+      </div>
       
       {/* Green gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-emerald-800 to-emerald-700 opacity-90"></div>
@@ -17,7 +32,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           <div className="text-white reveal">
             <div className="inline-block mb-4 px-4 py-1.5 bg-emerald-600/30 rounded-full border border-emerald-500/30">
-              <span className="text-sm font-medium text-emerald-100">Charting a New Course to Medical Excellence — Trust the experts.</span>
+              <span className="text-sm font-medium text-emerald-100">"Charting a New Course to Medical Excellence" — Trust the experts.</span>
             </div>
             
             <h1 className="text-white text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
@@ -29,27 +44,29 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl md:text-2xl font-light text-emerald-50 mb-10 max-w-xl">
-              Pathway to Global Pre-Med → MD Program in USA
+              Unlock your potential with an innovative pathway to an MD, tailored for driven individuals seeking a non-traditional route.
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="bg-white text-emerald-700 hover:bg-emerald-50 transform hover:-translate-y-1 transition-all text-base font-semibold px-8 h-14"
-                onClick={() => document.getElementById('admission-form')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Apply Now
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+              <Link to="/about">
+                <Button 
+                  size="lg" 
+                  className="bg-white text-emerald-700 hover:bg-emerald-50 transform hover:-translate-y-1 transition-all text-base font-semibold px-8 h-14"
+                >
+                  About Siddhartha Global
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
               
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-2 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all text-base font-semibold px-8 h-14"
-                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                About Siddhartha Global
-              </Button>
+              <Link to="/contact">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-2 border-white text-white hover:bg-white/20 transform hover:-translate-y-1 transition-all text-base font-semibold px-8 h-14"
+                >
+                  Contact Us
+                </Button>
+              </Link>
             </div>
             
             {/* Highlight stats */}
@@ -79,6 +96,10 @@ const Hero = () => {
                   src="/medical-students.jpg" 
                   alt="Medical Students" 
                   className="w-full h-auto"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
+                    e.currentTarget.onerror = null;
+                  }}
                 />
                 {/* Feature badge */}
                 <div className="absolute top-6 right-6 bg-white py-2 px-4 rounded-full shadow-lg">
