@@ -1,7 +1,9 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Search, X } from 'lucide-react';
 import PencilUnderline from './PencilUnderline';
+
 const Gallery = () => {
   const [activeImage, setActiveImage] = useState<null | string>(null);
 
@@ -37,6 +39,7 @@ const Gallery = () => {
     size: 'large',
     fallback: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=2070'
   }];
+  
   return <section className="section bg-emerald-50 py-20">
       <div className="container-wide">
         <div className="text-center mb-12 reveal">
@@ -53,8 +56,21 @@ const Gallery = () => {
           animationDelay: `${index * 0.1}s`
         }} onClick={() => setActiveImage(image.src)}>
               <div className="group h-64 md:h-80 w-full bg-gray-200 relative overflow-hidden">
-                
-                
+                <img 
+                  src={image.src} 
+                  alt={image.alt}
+                  className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+                  onError={(e) => {
+                    console.log(`Gallery image failed, using fallback for ${image.alt}`);
+                    const target = e.currentTarget;
+                    target.src = image.fallback;
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="bg-white/80 p-2 rounded-full">
+                    <Search className="h-5 w-5 text-emerald-700" />
+                  </div>
+                </div>
               </div>
             </div>)}
         </div>
