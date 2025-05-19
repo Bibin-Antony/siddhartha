@@ -16,22 +16,22 @@ const Hero = () => {
           src="/hero-students.jpg" 
           alt="Medical students in graduation" 
           className="w-full h-full object-cover"
-          onError={(e) => {
+          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
             // First fallback - try unsplash image
             console.log("Primary image failed, trying fallback #1");
             const target = e.currentTarget;
             target.src = "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070";
             // Set up second fallback in case the first one fails
-            target.onerror = (event) => {
+            target.onerror = (event: React.SyntheticEvent<HTMLImageElement>) => {
               console.log("First fallback failed, trying fallback #2");
               // Second fallback - another unsplash image
-              const imgElement = event.currentTarget as HTMLImageElement;
+              const imgElement = event.currentTarget;
               imgElement.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
               // Third fallback in case the second one fails
-              imgElement.onerror = (event2) => {
+              imgElement.onerror = (event2: React.SyntheticEvent<HTMLImageElement>) => {
                 console.log("Second fallback failed, using gradient fallback");
                 // Final fallback - hide the image and rely on the gradient background
-                const finalImgElement = event2.currentTarget as HTMLImageElement;
+                const finalImgElement = event2.currentTarget;
                 finalImgElement.style.display = 'none';
               };
             };
@@ -107,10 +107,10 @@ const Hero = () => {
               <div className="absolute -top-5 -left-5 w-72 h-72 bg-emerald-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
               <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-8 border-white/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-emerald-500/30">
                 <img 
-                  src="/medical-students.jpg" 
+                  src="/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png" 
                   alt="Medical Students" 
                   className="w-full h-auto"
-                  onError={(e) => {
+                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                     // Higher quality medical students fallback image
                     console.log("Secondary image failed, trying fallback");
                     const target = e.currentTarget;

@@ -7,27 +7,27 @@ import PencilUnderline from './PencilUnderline';
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Updated testimonials with high-quality Unsplash fallbacks
+  // Updated testimonials with uploaded images and high-quality Unsplash fallbacks
   const testimonials = [
     {
       quote: "The Siddhartha Global pathway made my dream of becoming a doctor possible. The transition from India to Curaçao was smooth, and the clinical rotations in the US gave me invaluable experience.",
       name: "Dr. Priya Sharma",
       role: "Recent Graduate, Class of 2021",
-      image: "/testimonials/person-1.jpg",
+      image: "/lovable-uploads/f1020951-7240-4403-81bc-e34f674a001d.png",
       fallback: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2070"
     },
     {
       quote: "As a faculty member, I've witnessed the incredible growth of students who come through this program. The comprehensive curriculum truly prepares them for global medical practice.",
       name: "Dr. Robert Miller",
       role: "Professor of Clinical Medicine",
-      image: "/testimonials/person-2.jpg",
+      image: "/lovable-uploads/a83c5359-cddd-4dc2-9712-4dd03393726d.png",
       fallback: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2070"
     },
     {
       quote: "The mentorship I received during my journey was exceptional. The faculty truly cares about student success, and the international exposure is unmatched by other programs.",
       name: "Dr. Ananya Patel",
       role: "Practicing Physician, New York",
-      image: "/testimonials/person-3.jpg",
+      image: "/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png",
       fallback: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070"
     }
   ];
@@ -64,7 +64,7 @@ const Testimonials = () => {
                       src={testimonials[activeIndex].image} 
                       alt={testimonials[activeIndex].name}
                       className="w-full h-full object-cover"
-                      onError={(e) => {
+                      onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                         console.log(`Testimonial image failed, using fallback for ${testimonials[activeIndex].name}`);
                         const target = e.currentTarget;
                         target.src = testimonials[activeIndex].fallback;

@@ -7,41 +7,41 @@ import PencilUnderline from './PencilUnderline';
 const Gallery = () => {
   const [activeImage, setActiveImage] = useState<null | string>(null);
 
-  // Updated gallery images with high-quality Unsplash fallbacks
+  // Updated gallery images with uploaded images and high-quality Unsplash fallbacks
   const images = [
     {
-      src: '/gallery/campus-1.jpg',
-      alt: 'Main Campus Building',
+      src: '/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png',
+      alt: 'Medical Students in Front of Campus',
       size: 'large',
       fallback: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070'
     },
     {
-      src: '/gallery/classroom-1.jpg',
-      alt: 'Modern Lecture Hall',
+      src: '/lovable-uploads/a83c5359-cddd-4dc2-9712-4dd03393726d.png',
+      alt: 'Medical Students in Lab Coats',
       size: 'small',
       fallback: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=2070'
     },
     {
-      src: '/gallery/lab-1.jpg',
-      alt: 'Advanced Medical Laboratory',
+      src: '/lovable-uploads/40a234d1-f97c-4586-b4ab-16ef8337efff.png',
+      alt: 'Students at Medical Simulation Lab',
       size: 'medium',
       fallback: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2070'
     },
     {
-      src: '/gallery/students-1.jpg',
-      alt: 'International Students in Discussion',
+      src: '/lovable-uploads/691d3a47-4c62-4327-8942-0999636c3cd1.png',
+      alt: 'Medical Training with Mannequin',
       size: 'medium',
       fallback: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070'
     },
     {
-      src: '/gallery/curacao-1.jpg',
-      alt: 'Beautiful Curaçao Campus',
+      src: '/lovable-uploads/f1020951-7240-4403-81bc-e34f674a001d.png',
+      alt: 'Student with Pre-Med Program Brochure',
       size: 'small',
       fallback: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2070'
     },
     {
-      src: '/gallery/doctor-1.jpg',
-      alt: 'Clinical Training with Professionals',
+      src: '/lovable-uploads/40a234d1-f97c-4586-b4ab-16ef8337efff.png',
+      alt: 'Advanced Medical Technology Training',
       size: 'large',
       fallback: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=2070'
     },
@@ -78,7 +78,7 @@ const Gallery = () => {
                   src={image.src} 
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  onError={(e) => {
+                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
                     console.log(`Gallery image failed, using fallback for ${image.alt}`);
                     const target = e.currentTarget;
                     target.src = image.fallback;
