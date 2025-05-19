@@ -16,23 +16,21 @@ const Hero = () => {
           src="/hero-students.jpg" 
           alt="Medical students in graduation" 
           className="w-full h-full object-cover"
-          onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+          onError={(e) => {
             // First fallback - try unsplash image
             console.log("Primary image failed, trying fallback #1");
             const target = e.currentTarget;
             target.src = "https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070";
             // Set up second fallback in case the first one fails
-            target.onerror = (event: React.SyntheticEvent<HTMLImageElement>) => {
+            target.onerror = () => {
               console.log("First fallback failed, trying fallback #2");
               // Second fallback - another unsplash image
-              const imgElement = event.currentTarget;
-              imgElement.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
+              target.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
               // Third fallback in case the second one fails
-              imgElement.onerror = (event2: React.SyntheticEvent<HTMLImageElement>) => {
+              target.onerror = () => {
                 console.log("Second fallback failed, using gradient fallback");
                 // Final fallback - hide the image and rely on the gradient background
-                const finalImgElement = event2.currentTarget;
-                finalImgElement.style.display = 'none';
+                target.style.display = 'none';
               };
             };
           }}
@@ -42,30 +40,30 @@ const Hero = () => {
       </div>
       
       {/* Hero content with improved styling and mobile responsiveness */}
-      <div className="container-wide relative z-10 pt-20 md:pt-24 lg:pt-20 px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
-          <div className="text-white reveal">
+      <div className="container-wide relative z-10 py-8 md:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="text-white text-center lg:text-left px-4 md:px-0 reveal">
             <div className="inline-block mb-4 px-4 py-1.5 bg-emerald-600/40 rounded-full border border-emerald-500/40 backdrop-blur-sm">
               <span className="text-sm font-medium text-emerald-100">"Charting a New Course to Medical Excellence" — Trust the experts.</span>
             </div>
             
-            <h1 className="text-white text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight">
               Empowering 
               <span className="relative ml-2">
                 Future Doctors
-                <span className="absolute bottom-2 left-0 w-full h-1 bg-emerald-400"></span>
+                <span className="absolute bottom-1 md:bottom-2 left-0 w-full h-1 bg-emerald-400"></span>
               </span>
             </h1>
             
-            <p className="text-lg sm:text-xl lg:text-2xl font-light text-emerald-50 mb-10 max-w-xl">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-emerald-50 mb-6 md:mb-10 mx-auto lg:mx-0 max-w-xl">
               Unlock your potential with an innovative pathway to an MD, tailored for driven individuals seeking a non-traditional route.
             </p>
             
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
               <Link to="/about">
                 <Button 
                   size="lg" 
-                  className="bg-white text-emerald-700 hover:bg-emerald-50 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-8 h-14 rounded-md shadow-lg"
+                  className="bg-white text-emerald-700 hover:bg-emerald-50 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-6 md:px-8 h-12 md:h-14 rounded-md shadow-lg"
                 >
                   About Siddhartha Global
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -76,7 +74,7 @@ const Hero = () => {
                 <Button 
                   variant="outline" 
                   size="lg" 
-                  className="border-2 border-white text-white bg-transparent hover:bg-white/20 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-8 h-14 rounded-md"
+                  className="border-2 border-white text-white bg-transparent hover:bg-white/20 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-6 md:px-8 h-12 md:h-14 rounded-md"
                 >
                   Contact Us
                 </Button>
@@ -84,7 +82,7 @@ const Hero = () => {
             </div>
             
             {/* Highlight stats with refined styling and improved mobile layout */}
-            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-lg">
+            <div className="mt-8 md:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4 lg:gap-6 mx-auto lg:mx-0 max-w-lg">
               <div className="bg-emerald-600/40 p-4 rounded-lg border border-emerald-500/40 backdrop-blur-sm shadow-lg transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="font-bold text-2xl text-white">50+</div>
                 <div className="text-emerald-100 text-sm">Years of Experience</div>
@@ -110,12 +108,11 @@ const Hero = () => {
                   src="/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png" 
                   alt="Medical Students" 
                   className="w-full h-auto"
-                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
+                  onError={(e) => {
                     // Higher quality medical students fallback image
                     console.log("Secondary image failed, trying fallback");
                     const target = e.currentTarget;
                     target.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
-                    target.onerror = null;
                   }}
                 />
                 {/* Feature badge with enhanced styling */}
@@ -125,6 +122,30 @@ const Hero = () => {
               </div>
               <div className="absolute -bottom-5 -right-5 w-64 h-64 bg-emerald-300 rounded-full filter blur-3xl opacity-30 animate-float delay-1000"></div>
             </div>
+          </div>
+        </div>
+        
+        {/* Visible image for mobile devices */}
+        <div className="block lg:hidden my-8 reveal">
+          <div className="relative mx-auto max-w-sm">
+            <div className="absolute -top-5 -left-5 w-40 h-40 bg-emerald-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
+            <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-4 border-white/10">
+              <img 
+                src="/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png" 
+                alt="Medical Students" 
+                className="w-full h-auto"
+                onError={(e) => {
+                  console.log("Mobile image failed, trying fallback");
+                  const target = e.currentTarget;
+                  target.src = "https://images.unsplash.com/photo-1580281657702-257584fb0119?q=80&w=2070";
+                }}
+              />
+              {/* Feature badge with enhanced styling */}
+              <div className="absolute top-4 right-4 bg-white py-1 px-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                <span className="text-xs font-semibold text-emerald-700">CAAM-HP Accredited</span>
+              </div>
+            </div>
+            <div className="absolute -bottom-5 -right-5 w-40 h-40 bg-emerald-300 rounded-full filter blur-3xl opacity-30 animate-float delay-1000"></div>
           </div>
         </div>
         
