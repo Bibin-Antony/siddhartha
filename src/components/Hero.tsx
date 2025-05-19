@@ -105,7 +105,7 @@ const Hero = () => {
               <div className="absolute -top-5 -left-5 w-72 h-72 bg-emerald-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
               <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-8 border-white/10 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-emerald-500/30">
                 <img 
-                  src="/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png" 
+                  src="/lovable-uploads/5485d921-b94f-4703-bea6-6eee1b523a8f.png" 
                   alt="Medical Students" 
                   className="w-full h-auto"
                   onError={(e) => {
@@ -131,7 +131,7 @@ const Hero = () => {
             <div className="absolute -top-5 -left-5 w-40 h-40 bg-emerald-500 rounded-full filter blur-3xl opacity-20 animate-float"></div>
             <div className="relative z-10 rounded-xl overflow-hidden shadow-2xl border-4 border-white/10">
               <img 
-                src="/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png" 
+                src="/lovable-uploads/48df9a07-fe31-48ac-b8da-2818b5c9f54a.png" 
                 alt="Medical Students" 
                 className="w-full h-auto"
                 onError={(e) => {

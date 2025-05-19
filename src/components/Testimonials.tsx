@@ -7,27 +7,27 @@ import PencilUnderline from './PencilUnderline';
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Updated testimonials with uploaded images and high-quality Unsplash fallbacks
+  // Updated testimonials with new uploaded images
   const testimonials = [
     {
       quote: "The Siddhartha Global pathway made my dream of becoming a doctor possible. The transition from India to Curaçao was smooth, and the clinical rotations in the US gave me invaluable experience.",
       name: "Dr. Priya Sharma",
       role: "Recent Graduate, Class of 2021",
-      image: "/lovable-uploads/f1020951-7240-4403-81bc-e34f674a001d.png",
+      image: "/lovable-uploads/855d4886-be9c-4dc1-858f-7964172b5fa3.png",
       fallback: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=2070"
     },
     {
       quote: "As a faculty member, I've witnessed the incredible growth of students who come through this program. The comprehensive curriculum truly prepares them for global medical practice.",
       name: "Dr. Robert Miller",
       role: "Professor of Clinical Medicine",
-      image: "/lovable-uploads/a83c5359-cddd-4dc2-9712-4dd03393726d.png",
+      image: "/lovable-uploads/5b420525-c621-4377-a252-73998d230a85.png",
       fallback: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=2070"
     },
     {
       quote: "The mentorship I received during my journey was exceptional. The faculty truly cares about student success, and the international exposure is unmatched by other programs.",
       name: "Dr. Ananya Patel",
       role: "Practicing Physician, New York",
-      image: "/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png",
+      image: "/lovable-uploads/48df9a07-fe31-48ac-b8da-2818b5c9f54a.png",
       fallback: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=2070"
     }
   ];

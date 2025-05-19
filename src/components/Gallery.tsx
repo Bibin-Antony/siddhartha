@@ -7,38 +7,40 @@ import PencilUnderline from './PencilUnderline';
 const Gallery = () => {
   const [activeImage, setActiveImage] = useState<null | string>(null);
 
-  // Updated gallery images with uploaded images and high-quality Unsplash fallbacks
-  const images = [{
-    src: '/lovable-uploads/80bd682c-dad1-444f-afdf-11d7733030ef.png',
-    alt: 'Medical Students in Front of Campus',
-    size: 'large',
-    fallback: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070'
-  }, {
-    src: '/lovable-uploads/a83c5359-cddd-4dc2-9712-4dd03393726d.png',
-    alt: 'Medical Students in Lab Coats',
-    size: 'small',
-    fallback: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?q=80&w=2070'
-  }, {
-    src: '/lovable-uploads/40a234d1-f97c-4586-b4ab-16ef8337efff.png',
-    alt: 'Students at Medical Simulation Lab',
-    size: 'medium',
-    fallback: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2070'
-  }, {
-    src: '/lovable-uploads/691d3a47-4c62-4327-8942-0999636c3cd1.png',
-    alt: 'Medical Training with Mannequin',
-    size: 'medium',
-    fallback: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070'
-  }, {
-    src: '/lovable-uploads/f1020951-7240-4403-81bc-e34f674a001d.png',
-    alt: 'Student with Pre-Med Program Brochure',
-    size: 'small',
-    fallback: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2070'
-  }, {
-    src: '/lovable-uploads/40a234d1-f97c-4586-b4ab-16ef8337efff.png',
-    alt: 'Advanced Medical Technology Training',
-    size: 'large',
-    fallback: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=2070'
-  }];
+  // Updated gallery images with new uploaded images
+  const images = [
+    {
+      src: '/lovable-uploads/855d4886-be9c-4dc1-858f-7964172b5fa3.png',
+      alt: 'Medical Students in Lab Coats',
+      size: 'large',
+      fallback: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?q=80&w=2070'
+    }, {
+      src: '/lovable-uploads/48df9a07-fe31-48ac-b8da-2818b5c9f54a.png',
+      alt: 'Student with Pre-Med Program Brochure',
+      size: 'small',
+      fallback: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2070'
+    }, {
+      src: '/lovable-uploads/5485d921-b94f-4703-bea6-6eee1b523a8f.png',
+      alt: 'Students at Medical Lecture',
+      size: 'medium',
+      fallback: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?q=80&w=2070'
+    }, {
+      src: '/lovable-uploads/5b420525-c621-4377-a252-73998d230a85.png',
+      alt: 'Medical Training Class',
+      size: 'medium',
+      fallback: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070'
+    }, {
+      src: '/lovable-uploads/691d3a47-4c62-4327-8942-0999636c3cd1.png',
+      alt: 'Medical Training with Equipment',
+      size: 'small',
+      fallback: 'https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=2070'
+    }, {
+      src: '/lovable-uploads/40a234d1-f97c-4586-b4ab-16ef8337efff.png',
+      alt: 'Advanced Medical Technology Training',
+      size: 'large',
+      fallback: 'https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=2070'
+    }
+  ];
   
   return <section className="section bg-emerald-50 py-20">
       <div className="container-wide">
@@ -87,4 +89,5 @@ const Gallery = () => {
         </div>}
     </section>;
 };
+
 export default Gallery;
