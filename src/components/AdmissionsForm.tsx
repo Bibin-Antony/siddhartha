@@ -1,32 +1,22 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Check, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Card, CardContent } from '@/components/ui/card';
-
 const AdmissionsForm = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  const eligibilityCriteria = [
-    '12th grade completion or equivalent',
-    'GPA ≥ 3.0/60%',
-    'Official transcripts',
-    'Personal statement',
-    'Letters of recommendation',
-    'Video interview',
-    'MCAT not required'
-  ];
-
+  const {
+    toast
+  } = useToast();
+  const eligibilityCriteria = ['12th grade completion or equivalent', 'GPA ≥ 3.0/60%', 'Official transcripts', 'Personal statement', 'Letters of recommendation', 'Video interview', 'MCAT not required'];
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -35,13 +25,11 @@ const AdmissionsForm = () => {
       setPhone('');
       toast({
         title: "Application initiated!",
-        description: "We'll contact you shortly with next steps.",
+        description: "We'll contact you shortly with next steps."
       });
     }, 1500);
   };
-
-  return (
-    <section id="admission-form" className="section py-28 bg-white relative overflow-hidden">
+  return <section id="admission-form" className="section py-28 bg-white relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-emerald-100 rounded-full opacity-20"></div>
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-100 rounded-full opacity-20"></div>
@@ -53,7 +41,7 @@ const AdmissionsForm = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-emerald-800 mb-6">
               <span className="relative">
                 Start Your Medical Journey
-                <span className="absolute bottom-1 left-0 w-full h-1 bg-emerald-400"></span>
+                <span className="absolute bottom-1 left-0 w-full h-1 bg-emerald-400 font-thin"></span>
               </span>
               {" "}Today
             </h2>
@@ -66,24 +54,18 @@ const AdmissionsForm = () => {
               <CardContent className="p-8">
                 <h3 className="text-emerald-800 text-2xl font-bold mb-6">Eligibility Criteria</h3>
                 <ul className="space-y-4">
-                  {eligibilityCriteria.map((criterion, index) => (
-                    <li key={index} className="flex items-center space-x-3">
+                  {eligibilityCriteria.map((criterion, index) => <li key={index} className="flex items-center space-x-3">
                       <div className="bg-emerald-100 rounded-full p-1.5 text-emerald-700">
                         <Check className="h-5 w-5" />
                       </div>
                       <span className="text-gray-700">{criterion}</span>
-                    </li>
-                  ))}
+                    </li>)}
                 </ul>
               </CardContent>
             </Card>
             
             <div className="relative">
-              <img 
-                src="/admissions-team.jpg" 
-                alt="Our Admissions Team" 
-                className="rounded-xl shadow-xl"
-              />
+              <img src="/admissions-team.jpg" alt="Our Admissions Team" className="rounded-xl shadow-xl" />
               <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl border-l-4 border-emerald-500">
                 <div className="text-base font-bold text-emerald-700">24/7 Support</div>
                 <div className="text-sm text-gray-500">We're here to help you succeed</div>
@@ -102,58 +84,28 @@ const AdmissionsForm = () => {
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                         Full Name <span className="text-red-500">*</span>
                       </label>
-                      <Input 
-                        id="name" 
-                        type="text" 
-                        placeholder="Enter your full name" 
-                        required 
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        className="border-gray-300 focus:border-emerald-500 h-12"
-                      />
+                      <Input id="name" type="text" placeholder="Enter your full name" required value={name} onChange={e => setName(e.target.value)} className="border-gray-300 focus:border-emerald-500 h-12" />
                     </div>
                     
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                         Email Address <span className="text-red-500">*</span>
                       </label>
-                      <Input 
-                        id="email" 
-                        type="email" 
-                        placeholder="Enter your email" 
-                        required 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="border-gray-300 focus:border-emerald-500 h-12"
-                      />
+                      <Input id="email" type="email" placeholder="Enter your email" required value={email} onChange={e => setEmail(e.target.value)} className="border-gray-300 focus:border-emerald-500 h-12" />
                     </div>
                     
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                         Phone Number <span className="text-red-500">*</span>
                       </label>
-                      <Input 
-                        id="phone" 
-                        type="tel" 
-                        placeholder="Enter your phone number" 
-                        required 
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        className="border-gray-300 focus:border-emerald-500 h-12"
-                      />
+                      <Input id="phone" type="tel" placeholder="Enter your phone number" required value={phone} onChange={e => setPhone(e.target.value)} className="border-gray-300 focus:border-emerald-500 h-12" />
                     </div>
                     
-                    <Button 
-                      type="submit" 
-                      className="w-full h-12 bg-emerald-700 hover:bg-emerald-800 group text-base font-medium"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? 'Submitting...' : (
-                        <>
+                    <Button type="submit" className="w-full h-12 bg-emerald-700 hover:bg-emerald-800 group text-base font-medium" disabled={isSubmitting}>
+                      {isSubmitting ? 'Submitting...' : <>
                           Submit Application 
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </>
-                      )}
+                        </>}
                     </Button>
                   </div>
                 </form>
@@ -166,8 +118,6 @@ const AdmissionsForm = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AdmissionsForm;
