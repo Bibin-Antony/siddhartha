@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <div className="relative bg-emerald-700 min-h-screen flex items-center">
+    <div className="relative bg-emerald-700 min-h-screen  flex items-center">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-10"></div>
       
@@ -63,7 +63,7 @@ const Hero = () => {
               <Link to="/about">
                 <Button 
                   size="lg" 
-                  className="bg-white text-emerald-700 hover:bg-emerald-50 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-6 md:px-8 h-12 md:h-14 rounded-md shadow-lg"
+                  className="bg-white text-emerald-600 hover:bg-emerald-50 transform hover:-translate-y-1 transition-all duration-300 text-base font-semibold px-6 md:px-8 h-12 md:h-14 rounded-md shadow-lg"
                 >
                   About Siddhartha Global
                   <ArrowRight className="ml-2 h-4 w-4" />

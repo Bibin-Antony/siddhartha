@@ -64,13 +64,7 @@ const AdmissionsForm = () => {
               </CardContent>
             </Card>
             
-            <div className="relative">
-              <img src="/admissions-team.jpg" alt="Our Admissions Team" className="rounded-xl shadow-xl" />
-              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl border-l-4 border-emerald-500">
-                <div className="text-base font-bold text-emerald-700">24/7 Support</div>
-                <div className="text-sm text-gray-500">We're here to help you succeed</div>
-              </div>
-            </div>
+    
           </div>
           
           <div className="reveal order-1 md:order-2 delay-200">
